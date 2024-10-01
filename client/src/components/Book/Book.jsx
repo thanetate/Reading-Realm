@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import Search from './Search';
 
 // Books component to get input from the user and 

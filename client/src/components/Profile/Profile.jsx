@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Login from "./Login";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { gapi } from 'gapi-script';
+import PropTypes from "prop-types";
 
 //this is our profile page
 //either renders profile info TODO!!
 //or renders login google button 
-const Profile = ({ title, setActive }) => {
+const Profile = ({ title }) => {
 
     const clientId = "idgoeshere.com"; // UPDATE THIS!!
 
@@ -32,6 +33,10 @@ const Profile = ({ title, setActive }) => {
             </div>
         </div>
     );
+};
+
+Profile.propTypes = {
+    title: PropTypes.string.isRequired,
 };
 
 export default Profile;

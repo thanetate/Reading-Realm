@@ -1,5 +1,4 @@
-import React from 'react';
-
+import PropTypes from "prop-types";
 // Search component to search for books.
 // Includes a form with a text input field and a submit button.
 // The input field has an onChange event listener that calls the handleSearch function.
@@ -21,5 +20,12 @@ const Search = (props) => {
         </div>
     )
 }
+
+// Define prop types for the Search component
+Search.propTypes = {
+    searchField: PropTypes.string.isRequired,
+    handleSearch: PropTypes.func.isRequired,
+    searchBook: PropTypes.func.isRequired,
+};
 
 export default Search;

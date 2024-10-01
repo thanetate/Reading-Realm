@@ -1,6 +1,7 @@
-import React from 'react';
-import Books from '../Books/Books.js';
-import Profile from '../Profile/Profile.js';
+// import Books from '../Books/Books.js';
+import Profile from '../Profile/Profile';
+import PropTypes from 'prop-types';
+import Books from '../Book/Book';
 
 /* This is the overall structure for the header
         App.js
@@ -35,11 +36,17 @@ function Header({ active, setActive }) {
                 </button>
             </nav>
             {/* This is the search bar */}
-            <Books />
+            <Books/>
             {/* This is the rendering the profile component when user clicks icon*/}
-            {active === "Profilepage" && <Profile title="Profile Page" setActive={setActive} />}
+            {active === "Profilepage" && <Profile title="Profile Page" />}
         </div>
     );
+};
+
+// PropTypes for Header component
+Header.propTypes = {
+    active: PropTypes.string.isRequired,
+    setActive: PropTypes.func.isRequired,
 };
 
 export default Header;

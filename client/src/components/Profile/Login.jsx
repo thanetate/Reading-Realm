@@ -1,4 +1,3 @@
-import React from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 
 //this is our profile page when user has NOT logged in yet.
