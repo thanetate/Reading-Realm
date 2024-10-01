@@ -1,13 +1,10 @@
 import { useEffect } from "react";
-import Login from "./Login";
+import Login from "../components/Header/Login";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { gapi } from 'gapi-script';
-import PropTypes from "prop-types";
+import Header from "../components/Header/Header";
 
-//this is our profile page
-//either renders profile info TODO!!
-//or renders login google button 
-const Profile = ({ title }) => {
+function Profile() {
 
     const clientId = "idgoeshere.com"; // UPDATE THIS!!
 
@@ -22,9 +19,11 @@ const Profile = ({ title }) => {
     }, [clientId]);
 
     return (
+        <>
+        <Header/>
         <div className="card-container">
             <div className="profile-card">
-                <p className="card-title">{title}</p>
+                <p className="card-title">Profile Page</p>
                 <div className="card-login">
                     <GoogleOAuthProvider clientId={clientId}>
                         <Login />
@@ -32,11 +31,9 @@ const Profile = ({ title }) => {
                 </div>
             </div>
         </div>
-    );
-};
-
-Profile.propTypes = {
-    title: PropTypes.string.isRequired,
-};
+        </>
+    )
+}
 
 export default Profile;
+
