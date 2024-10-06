@@ -1,0 +1,93 @@
+Authentication in the Project
+
+1. Overview:
+   This project uses JWT (JSON Web Tokens) for authentication, 
+   bcrypt for password hashing, 
+   react-hot-toast for notifications, 
+   axios for HTTP requests, 
+   jsonwebtoken for generating and verifying tokens, 
+   and cookie-parser for handling cookies. 
+
+   The authentication process involves various components including controllers, 
+   helpers, modules, context, and the front end in React.
+
+2. JWT (JSON Web Tokens):
+   - JWT is used to securely transmit information between the client and server.
+   - It consists of three parts: Header, Payload, and Signature.
+   - The server generates a token upon successful login, which is then sent to the client and stored in a cookie.
+
+3. bcrypt:
+   - bcrypt is used for hashing passwords before storing them in the database.
+   - It ensures that even if the database is compromised, the passwords remain secure.
+   - The bcrypt library provides functions to hash passwords and compare hashed passwords.
+
+4. react-hot-toast:
+   - react-hot-toast is used for displaying notifications to the user.
+   - It provides a simple and customizable way to show success, error, and informational messages.
+
+5. axios:
+   - axios is used for making HTTP requests from the client to the server.
+   - It simplifies the process of sending requests and handling responses.
+   - axios can be configured to include credentials (cookies) in requests.
+
+6. jsonwebtoken:
+   - jsonwebtoken is a library used to generate and verify JWTs.
+   - It provides functions to sign tokens with a secret key and verify tokens to ensure their validity.
+
+7. cookie-parser:
+   - cookie-parser is a middleware used to parse cookies in incoming requests.
+   - It allows the server to read and write cookies, which are used to store the JWT.
+
+8. Controllers:
+   - Controllers handle the logic for authentication-related routes.
+   - The authController.js file contains functions like registerUser, loginUser, and getProfile.
+   - registerUser: Handles user registration, hashes the password using bcrypt, and saves the user to the database.
+   - loginUser: Handles user login, verifies the password using bcrypt, generates a JWT, and sets it in a cookie.
+   - getProfile: Retrieves the user's profile information from the JWT stored in the cookie.
+
+9. Helpers:
+   - Helpers contain utility functions used across the project.
+   - The auth.js file in the helpers directory includes functions like hashPassword and comparePassword.
+   - hashPassword: Uses bcrypt to hash a plain text password.
+   - comparePassword: Uses bcrypt to compare a plain text password with a hashed password.
+
+10. Models:
+    - Models define the structure of the data in the database.
+    - The user.js file in the models directory defines the User schema using Mongoose.
+    - User Schema:
+      - name: The user's name, stored as a string.
+      - email: The user's email, stored as a string and must be unique.
+      - password: The user's hashed password, stored as a string.
+    - The User model is used to interact with the users collection in the MongoDB database.
+    - The User model is used in the controllers to create, read, update, and delete user data.
+
+11. Context:
+    - Context is used to manage and share user state across different components in the React application.
+    - The userContext.jsx file creates a UserContext and a UserContextProvider component.
+    - UserContextProvider: Fetches the user's profile data and provides the user state and setUser function to child components.
+
+12. Front End (React):
+    - The front end handles user interactions and communicates with the server for authentication.
+    - The Login.jsx file contains the login form and the loginUser function.
+    - loginUser: Sends a POST request to the /login endpoint with the user's email and password using axios.
+    - If the login is successful, the user is redirected to the dashboard, and a success message is displayed using react-hot-toast.
+    - The userContext.jsx file manages the user state and provides it to the rest of the application.
+
+13. Interaction Flow:
+    - User Registration:
+      1. The user submits the registration form.
+      2. The registerUser function in authController.js hashes the password and saves the user to the database.
+      3. The user is registered successfully.
+
+    - User Login:
+      1. The user submits the login form.
+      2. The loginUser function in authController.js verifies the password and generates a JWT.
+      3. The JWT is set in a cookie and sent to the client.
+      4. The client stores the cookie and includes it in subsequent requests.
+      5. The server verifies the JWT in incoming requests to authenticate the user.
+
+    - Fetching User Profile:
+      1. The client sends a request to the /profile endpoint.
+      2. The getProfile function in authController.js retrieves the JWT from the cookie.
+      3. The JWT is verified, and the user's profile information is sent back to the client.
+      4. The client updates the user state with the retrieved profile information.

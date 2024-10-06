@@ -17,13 +17,18 @@ npm i express
 npm i nodemon -D
 scripts: add "start": "node server", "dev": "nodemon server"
 
+CLIENT ~
 cd client
-npx create-react-app .
-delete everything in app.css , app.js, 
+npm create vite@latest .
 
-app.js :
-rfce - shortcut
+changed port from 517something to 3000 cause its easier to remember
+vite.config.js -> exports -> added server : {port: 3000},
 
+npm install for dependencies
+npm run dev 
+
+
+SERVER ~
 server -> server.js :
 const express = require('express')
 const app = express()
