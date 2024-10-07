@@ -1,63 +1,60 @@
 import { Component } from 'react';
 import Search from './Search';
+import BookList from './BookList';
+
+
 
 // Books component to get input from the user and 
-// fetch data from the Google Books API.
+// fetch data from OpenLibrary API.
 class Books extends Component {
 
     // Constructor to initialize the state.
     constructor(props) {
         super(props);
         this.state = {
-            //books: [],
+            books: [],
             searchField: '',
         };
+        
     }
 
-    // Function to search for books
+     // Function to search for books
     searchBook = (e) => {
-
+        
         // Prevent the default action of the form.
         e.preventDefault();
 
-        //Fetch the data from the Google Books API.
+        //Fetch the data from OpenLibrary.
         const {searchField} = this.state;
-        fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(searchField)}`)
 
-            //Check if the response is ok and return the data.
-            .then(response => {
-                if(!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json() ;
+        fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(searchField)}&limit=10`)
+
+            .then(response => response.json())
+            .then(data=> {
+                //console.log(data); //debug statement
+                this.setState({books: [...data.docs]});
             })
+            .catch(error => console.error('Error: ', error));
 
-            //Log the book data to the console.
-            .then(data => {
-                console.log(data);
-                //this.setState({books: [...data.body.items]});
-            })
+        };
 
-            //Catch any errors and log them to the console.
-            .catch(error => {
-                console.error('There has been a problem with your fetch operation:', error);
-            }); 
-    }
-
-    //Function to handle the search field.
+     //Function to handle the search field.
     handleSearch = (e) => {
-        console.log(e.target.value); //debug statement
+        //console.log(e.target.value); //debug statement
         this.setState({searchField: e.target.value});
-    }
+    };
 
     //Render the search component.
-    render() {
+    render()  {
+        
         return (
         <div>
             <Search searchBook={this.searchBook} handleSearch={this.handleSearch} />
+            <BookList books={this.state.books}/>
         </div>
         );
     }
 }
 
 export default Books;
+
