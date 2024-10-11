@@ -6,6 +6,7 @@ import UserRecommendations from "../components/Recommendations/UserRecommendatio
 function Home() {
   return (
     <>
+    <div>
       <Header />
       <div>
         {/* Home Page */}
@@ -15,6 +16,7 @@ function Home() {
         <UserRecommendations />
       </div>
       <Footer/>
+      </div>
     </>
   );
 }
