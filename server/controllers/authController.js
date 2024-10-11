@@ -93,6 +93,12 @@ const loginUser = async (req, res) => {
 	}
 };
 
+//logout endpoint
+const logoutUser = (req, res) => {
+	res.clearCookie('token');
+	res.json({ message: "Logout Success" });
+};
+
 // Retrieves the user's profile information from the JWT stored in the cookie
 const getProfile = (req, res) => {
 	const { token } = req.cookies;
@@ -110,5 +116,6 @@ module.exports = {
 	test,
 	registerUser,
 	loginUser,
+	logoutUser,
 	getProfile,
 };

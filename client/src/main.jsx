@@ -16,9 +16,9 @@ axios.defaults.baseURL = "http://localhost:8000";
 axios.defaults.withCredentials = true;
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-	<UserContextProvider>
 		<React.StrictMode>
 			<BrowserRouter>
+			<UserContextProvider>
 				<Toaster
 					position="bottom-center"
 					toastOptions={{
@@ -29,14 +29,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 						},
 					}}
 				/>
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/register" element={<Register />} />
-					<Route path="/login" element={<Login />} />
-					<Route path="/dashboard" element={<Dashboard />} />
-					<Route path="/search-page" element={<SearchPage />} />
-				</Routes>
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/register" element={<Register />} />
+						<Route path="/login" element={<Login />} />
+						<Route path="/dashboard" element={<Dashboard />} />
+						<Route path="/search-page" element={<SearchPage />} />
+					</Routes>
+				</UserContextProvider>
 			</BrowserRouter>
 		</React.StrictMode>
-	</UserContextProvider>
 );

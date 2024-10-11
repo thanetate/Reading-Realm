@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
+import { UserContext } from "../../../context/userContext";
+import { useContext } from "react";
 import Books from "../Book/Book";
 
 function Header() {
+	const { user } = useContext(UserContext);
+
 	return (
 		<>
 			<div className="header">
@@ -14,14 +18,19 @@ function Header() {
 
 				{/* Profile Icon */}
 				<div className="user-section">
-					<Link to="/">
+				{user ? (
+					<Link to="/dashboard">
 						<button>
 							<img src="/icons/user-line.svg" alt="user icon" />
 						</button>
 					</Link>
-					<Link to="/login">Login</Link>
-					<Link to="/register">Register</Link>
-					<Link to="/dashboard">Dashboard</Link>
+				) : (
+					<Link to="/login">
+						<button>
+							<img src="/icons/user-line.svg" alt="user icon" />
+						</button>
+					</Link>
+				)}
 				</div>
 				<Books />
 			</div>

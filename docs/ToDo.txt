@@ -1,0 +1,9 @@
+Todo ~
+
+Dashboard/Login/Register Page : 
+1. make sure that users cannot access dashboard if they are not logged in 
+
+Bugs :
+    1. when users are logged in and on homepage they are redirected to login and not dashboard
+        this only happens after the user logs out and logs back in, but if you are initially logged in 
+        it works fine ???
