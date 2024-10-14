@@ -10,6 +10,7 @@ import Register from "./pages/Register";
 import axios from "axios";
 import { UserContextProvider } from "../context/userContext";
 import { Toaster } from "react-hot-toast";
+import Settings from "./pages/Settings";
 
 // Connecting front end to backend server
 axios.defaults.baseURL = "http://localhost:8000";
@@ -35,6 +36,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 						<Route path="/login" element={<Login />} />
 						<Route path="/dashboard" element={<Dashboard />} />
 						<Route path="/search-page" element={<SearchPage />} />
+						<Route path= "/dashboard/settings" element={<Settings />} />
 					</Routes>
 				</UserContextProvider>
 			</BrowserRouter>

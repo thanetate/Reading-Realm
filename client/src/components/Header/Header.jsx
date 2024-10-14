@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { UserContext } from "../../../context/userContext";
-import { useContext } from "react";
+// import { UserContext } from "../../../context/userContext";
+// import { useContext } from "react";
 import Books from "../Book/Book";
 
 function Header() {
-	const { user } = useContext(UserContext);
+	//const { user } = useContext(UserContext);
 
 	return (
 		<>
@@ -16,9 +16,7 @@ function Header() {
 					</Link>
 				</div>
 
-				{/* Profile Icon */}
-				<div className="user-section">
-				{user ? (
+				{/* {user ? (
 					<Link to="/dashboard">
 						<button>
 							<img src="/icons/user-line.svg" alt="user icon" />
@@ -30,8 +28,8 @@ function Header() {
 							<img src="/icons/user-line.svg" alt="user icon" />
 						</button>
 					</Link>
-				)}
-				</div>
+				)} */}
+				
 				<Books />
 			</div>
 		</>
