@@ -24,22 +24,21 @@ const Search = ({ searchBook, handleSearch, searchField }) => {
                     value={searchField}
                     placeholder="Search for books, authors, and users..."
                 />
-                {/* <button type="submit">Search</button> */}
+                {/* <button type="submit">Search</button> */
 //             </form>
 //         </div>
 //     )
 // } 
-
-// Define prop types for the Search component
+{/* // Define prop types for the Search component
 Search.propTypes = {
     searchField: PropTypes.string.isRequired,
     handleSearch: PropTypes.func.isRequired,
     searchBook: PropTypes.func.isRequired,
 };
 
-export default Search; */
+export default Search;
+ */}
 
-import React from 'react';
 import PropTypes from 'prop-types';
 
 const Search = ({ searchBook, handleSearch, searchField }) => {
