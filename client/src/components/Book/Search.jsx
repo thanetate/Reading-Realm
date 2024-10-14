@@ -29,7 +29,7 @@ const Search = ({ searchBook, handleSearch, searchField }) => {
 //         </div>
 //     )
 // } 
-{/* // Define prop types for the Search component
+/* // Define prop types for the Search component
 Search.propTypes = {
     searchField: PropTypes.string.isRequired,
     handleSearch: PropTypes.func.isRequired,
@@ -37,7 +37,7 @@ Search.propTypes = {
 };
 
 export default Search;
- */}
+ */
 
 import PropTypes from 'prop-types';
 
