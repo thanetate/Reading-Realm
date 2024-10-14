@@ -40,13 +40,6 @@ class Books extends Component {
                 
             })
             .catch(error => console.error('Error: ', error));
-
-        };
-
-     //Function to handle the search field.
-    handleSearch = (e) => {
-        //console.log(e.target.value); //debug statement
-        this.setState({searchField: e.target.value});
     };
 
     //Render the search component.
@@ -54,8 +47,11 @@ class Books extends Component {
 
         return (
         <div>
-            <Search searchBook={this.searchBook} handleSearch={this.handleSearch} />
-            <BookList books={this.state.books}/>
+            <Search 
+                searchBook={searchBook} 
+                handleSearch={handleSearch} 
+                searchField={searchField} 
+            />
         </div>
         );
     }

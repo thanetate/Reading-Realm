@@ -13,20 +13,22 @@ import { useNavigate } from "react-router-dom";
 
 const Search = (props) => {
 
+const Search = ({ searchBook, handleSearch, searchField }) => {
     return (
-        <div className = "search-area">
-            <form onSubmit={props.searchBook} action="" >
+        <div className="search-area">
+            <form onSubmit={searchBook}>
             <img src='/icons/search-line.svg' alt='search icon'/>
                 <input 
-                    onChange={props.handleSearch} 
+                    onChange={handleSearch} 
                     type="text"
-                    value={props.searchField}
-                    placeholder="Search for books, authors, and users..."/>
-            </form>
-
-        </div>
-    )
-} 
+                    value={searchField}
+                    placeholder="Search for books, authors, and users..."
+                />
+                {/* <button type="submit">Search</button> */}
+//             </form>
+//         </div>
+//     )
+// } 
 
 // Define prop types for the Search component
 Search.propTypes = {
