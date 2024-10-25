@@ -5,7 +5,6 @@ Contributors:
 -Kathyrn Sheahen
 -Aymen Beshir
 -Kaden Mcclung
--Rick Shukla
 
 
 CSCE 3444 Section 001 Class Project
