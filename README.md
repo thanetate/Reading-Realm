@@ -24,4 +24,4 @@ MONGO_URL = copy the string with your username and password
 
 to run server locally - npm run dev
 
-then in browser - http://localhost:5001/api
+then in browser - http://localhost:3000/
