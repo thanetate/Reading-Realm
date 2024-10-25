@@ -1,0 +1,22 @@
+.homepage {
+    background-color: #f0f0f0;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Posts Section */
+.home-card-post {
+    background-color: white;
+    border-radius: 10px;
+    width: calc(100vw - 800px);
+    height: 200px;
+    overflow: hidden;
+	margin-left: 40px;
+    margin-top: 20px;
+}
+.home-post-name {
+	font-weight: 500;
+	font-size: x-large;
+	padding: 20px;
+	margin-bottom: 10px;
+}

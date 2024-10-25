@@ -1,0 +1,25 @@
+const express = require('express');
+const router = express.Router();
+const cors = require("cors");
+
+// Import from controller
+const {
+    setReadingGoal,
+    updateReadingProgress,
+    getReadingGoal,
+} = require("../controllers/readingGoalController");
+
+// Middleware
+router.use(
+    cors({
+        credentials: true,
+        origin: "http://localhost:3000",
+    })
+);
+
+// Routes for reading goals
+router.post("/reading-goals/set", setReadingGoal);
+router.put("/reading-goals/update", updateReadingProgress);
+router.get("/reading-goals/get", getReadingGoal);
+
+module.exports = router;

@@ -42,7 +42,7 @@ const UserRecommendations = () => {
 	}, []);
 
 	return (
-		<section className="book-recommendations-section">
+		<section className="recommendations-section">
 			<h2>Connect with People</h2>
 			<div className="book-cards">
 				{users.map((user) => (

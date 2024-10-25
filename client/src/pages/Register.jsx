@@ -4,53 +4,44 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
+//register page
 export default function Register() {
+	//navigate
 	const navigate = useNavigate();
 
+	//default data
 	const [data, setData] = useState({
 		name: "",
 		email: "",
 		password: "",
 	});
 
-	// const registerUser = async (e) => {
-	// 	e.preventDefault();
-	// 	const { name, email, password } = data;
-	// 	try {
-	// 		const { data } = await axios.post("/register", {
-	// 			name,
-	// 			email,
-	// 			password,
-	// 		});
-	// 		if (data.error) {
-	// 			toast.error(toast.error);
-	// 		} else {
-	// 			setData({});
-	// 			toast.success("Login Success!");
-	// 			navigate("/login");
-	// 		}
-	// 	} catch (error) {
-	// 		console.error("Error during registration:", error);
-	// 		toast.error("Registration failed. Please try again.");
-	// 	}
-	// };
+	//function that registers the user to the db
 	const registerUser = async (e) => {
+		//prevents default form submit
 		e.preventDefault();
+		//destruct's the name email and password
 		const { name, email, password } = data;
 		try {
+			//sends a POST request to the /register endpoint
 			const response = await axios.post("/register", {
 				name,
 				email,
 				password,
 			});
+			//check if response contains an error
 			if (response.data.error) {
+				//display toast error
 				toast.error(response.data.error);
 			} else {
-				setData({ name: "", email: "", password: "" });
+				//clear the form data
+				setData({ name: "", email: "", password: ""});
 				toast.success("Registration Success!");
+				//nav to login page
 				navigate("/login");
 			}
 		} catch (error) {
+			//display toast error
 			toast.error("An error occurred during registration.");
 			console.error(error);
 		}
@@ -90,4 +81,4 @@ export default function Register() {
 			</form>
 		</>
 	);
-}
+};

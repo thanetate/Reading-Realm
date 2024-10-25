@@ -1,61 +1,89 @@
-/* 
-The purpose of the userContext.jsx file is to create a React context 
-for managing and sharing user state across different components in your application. 
-
-basically so the whole app can receive this state
-*/
+//TODO: fix this warning - Could not Fast Refresh ("UserContext" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react-swc#consistent-components-exports
 import axios from "axios";
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect} from "react";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom"; // Correct import statement
+import { useNavigate } from "react-router-dom";
 
+//create a UserContext with a empty object 
 export const UserContext = createContext({});
 
-export function UserContextProvider({ children }) {
+//to provide user state to its children
+export const UserContextProvider = ({ children }) => {
     const [user, setUser] = useState(() => {
         // Retrieve user from local storage if available
         const savedUser = localStorage.getItem("user");
         return savedUser ? JSON.parse(savedUser) : null;
     });
 
-    const navigate = useNavigate(); // Initialize useHistory
+    //for navigation
+    const navigate = useNavigate();
+
+    //to fetch user data from backend if user state is nil
+    // useEffect(() => {
+    //   if (!user) {
+    //         //axios calls the endpoints in the server
+    //         axios
+    //             .get("/profile")
+    //             .then((response) => {
+    //               console.log('Setting user', user)
+    //                 setUser(response.data);
+    //                 // Save user to local storage
+    //                 localStorage.setItem("user", JSON.stringify(response.data));
+    //             })
+    //             .catch((error) => {
+    //                 console.error("Error fetching profile:", error);
+    //             });
+    //     }
+    // }, [user]); //dependency array, runs the effect more than once
 
     useEffect(() => {
-        if (!user) {
-            axios
-                .get("/profile")
-                .then((response) => {
-                    setUser(response.data);
-                    // Save user to local storage
-                    localStorage.setItem("user", JSON.stringify(response.data));
-                })
-                .catch((error) => {
-                    console.error("Error fetching profile:", error);
-                });
-        }
+      localStorage.setItem("user", JSON.stringify(user))
     }, [user]);
-
-     // Function to log out the user
+ 
+    //function to logout user
     const logout = () => {
-    console.log("Logging out...");
-    axios.post("/logout")
-      .then(() => {
-        setUser(null);
-        localStorage.removeItem("user");
-        navigate("/"); // Redirect to homepage
+      console.log("Logging out...");
+      //calls logout endpoint
+      axios.post("/logout")
+          .then(() => {
+            setUser(null);
+            //removes user from local storage
+            localStorage.removeItem("user");
+            //redirects to login page
+            navigate("/login");
+        })
+        .catch((error) => {
+            console.error("Error logging out:", error);
+        });
+  };
+  
+   //function to update the user
+   const updateUser = (userId, newDetails) => {
+    console.log("Updating user:", userId, newDetails);
+    axios.put("/updateUser", { userId, newDetails })
+      .then(response => {
+        if (response.data.success) {
+          setUser(response.data.user);
+          console.log("User updated:", response.data.user);
+        } else {
+          console.error("Failed to update user:", response.data.message);
+        }
       })
-      .catch((error) => {
-        console.error("Error logging out:", error);
+      .catch(error => {
+        console.error("Error updating user:", error);
       });
   };
 
+    //return component with the functions as its value
     return (
-        <UserContext.Provider value={{ user, setUser, logout }}>
-            {children}
-        </UserContext.Provider>
-    );
-}
+      <UserContext.Provider value={{ user, setUser, logout, updateUser }}>
+          {children}
+      </UserContext.Provider>
+  );
+};
 
+//define prop types for the component
 UserContextProvider.propTypes = {
-    children: PropTypes.node.isRequired,
+  //children props should be required and a React node
+  children: PropTypes.node.isRequired,
 };

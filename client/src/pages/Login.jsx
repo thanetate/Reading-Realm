@@ -1,39 +1,49 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header/Header";
-//connecting to the backend
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../context/userContext";
 
 export default function Login() {
+
+	const { setUser } = useContext(UserContext);
+
+	//navigate
 	const navigate = useNavigate();
-	// State to hold email and password input values
+	//state to hold email and password input values
 	const [data, setData] = useState({
 		email: "",
 		password: "",
 	});
 
-	//handles user logic
+	//handles login page
 	const loginUser = async (e) => {
+		//prevents default form submit
 		e.preventDefault();
+		//destruct's the name email and password
 		const { email, password } = data;
 		try {
-			// Send a POST request to the /login endpoint with email and password
-			const { data } = await axios.post("/login", {
+			//sends a POST request to the /login endpoint
+			const res = await axios.post("/login", {
 				email,
 				password,
 			});
-			// Check if there is an error in the response
-			if (data.error) {
+			//toast error
+			if (res.data.error) {
 				toast.error(data.error);
 			} else {
-				// Clear the form data
+				console.log('Login response', res.data);
+				//clear the form data
 				setData({});
-				// Navigate to the dashboard page
+				setUser(res.data.user);
 				navigate("/dashboard");
 			}
 		} catch (error) {
+			//display toast error
+			toast.error("An error occurred during registration.");
 			console.log(error);
 		}
 	};
@@ -67,4 +77,4 @@ export default function Login() {
 			</form>
 		</>
 	);
-}
+};
