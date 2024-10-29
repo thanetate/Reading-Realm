@@ -18,13 +18,14 @@ const SearchPage = () => {
     const [offset, setOffset] = useState(books.length); // Set Offset to books length
     const [limit, setLimit] = useState(20); // Limit for each fetch
     const value = 10; // Value to increment offset and limit
+    const API_KEY = import.meta.env.VITE_API_KEY; // API key
     
     // Function to load more books when button is clicked
     // NOT STRESS TESTED 
     const loadMoreBooks = () => {
         
         // Fetch data from Google Books API
-        fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(searchResult)}&startIndex=${offset}&maxResults=${limit}`)
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(searchResult)}&key=${encodeURIComponent(API_KEY)}&startIndex=${offset}&maxResults=${limit}`)
 
             .then(response => {
                 if (!response.ok) {
@@ -60,6 +61,7 @@ const SearchPage = () => {
                             image={book.volumeInfo?.imageLinks?.thumbnail || "./icons/NO_COVER.jpeg"}
                             title={book.volumeInfo?.title || "No title available"}
                             author={book.volumeInfo?.authors?.join(", ") || "No author available"}
+                            id={book?.id || "No ID available"} //{/* Parameter passing for individual book page */} 
                         />
                     </li>
                 ))}

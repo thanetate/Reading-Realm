@@ -300,20 +300,26 @@ https://coolors.co/c82b2d-ed5229-000000-ffffff-c51e24
 	border-width: 0.5px;
 	border-color: rgba(0, 0, 0, 0.2);
 }
+.book-desc {
+	margin-top: 0;
+}
 .book-desc h2 {
 	font-size: 28px;
 	font-weight: 425;
 	color: black ;
-	margin-top: 10px;
+	margin-top: 5px;
 	width: 650px;
 	word-wrap: break-word;
 	padding-left: 5px;
+	margin-bottom: 0;
 }
 .book-desc h3 {
 	font-size: 18px;
 	color: #333;
 	font-weight: 250;
 	padding-left: 5px;
+	margin-top: 0;
+	margin-bottom: 5px;
 }
 .showmore img{
 	position: absolute;
@@ -330,16 +336,24 @@ https://coolors.co/c82b2d-ed5229-000000-ffffff-c51e24
 .dropdown-btn {
 	background-color: #C51E24;
 	color: white;
-	border: none;
-	border-radius: 5px;
+	/* border: none; */
+	border-color: #C51E24;
+	border-style: solid;
+	/* border-radius: 5px; */
 	padding: 10px 20px;
 	font-size: 16px;
 	cursor: pointer;
 	margin-top: 10px;
-	box-shadow: 0px 1px 3px #000000 inset;
+	color: white;
+	background-color: #a52828;
+	border-radius: 10px;
+	box-shadow: 0px 1px 3px #000000;
+	transition: background-color 0.3s ease, transform 0.3s ease; 
 }
 .dropdown-btn:hover {
-	background-color: 	#f73538;
+	background-color: white;
+    transform: scale(1.05);
+	color: #c82b2d;
 }
 .dropdown {
 	position: relative;
@@ -440,4 +454,10 @@ https://coolors.co/c82b2d-ed5229-000000-ffffff-c51e24
 	margin-left: 10px;
 	font-weight: 500;
 	font-size: large;
+}
+
+.book-card-search-page ul {
+	list-style-type: none;
+	padding: 0; /* Remove padding */
+	margin: 0; /* Remove margins */
 }

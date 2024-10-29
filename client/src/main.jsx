@@ -44,6 +44,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 						<Route path= "/dashboard/settings" element={<Settings />} />
 						<Route path= "/dashboard/reading-goals" element={<ReadingGoals />} />
 						<Route path="/reading-list" element={<ReadingList />} /> 
+						<Route path="/book/:volumeID" element={<IndividualBook />}/>
 					</Routes>
 				</UserContextProvider>
 				</Provider>
