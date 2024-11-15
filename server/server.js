@@ -4,6 +4,9 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const app = express();
+//routes
+const bookRoutes = require('./routes/books');
+const postRoutes = require('./routes/postRoutes');
 
 //database connect
 mongoose
@@ -18,6 +21,8 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/", require("./routes/authRoutes"));
 app.use("/", require("./routes/readingGoalRoutes"));
+app.use('/api/books', bookRoutes);
+app.use('/api', postRoutes);
 
 const port = 8000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));

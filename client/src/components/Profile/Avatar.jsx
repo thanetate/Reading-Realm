@@ -1,11 +1,10 @@
-import { useContext } from "react";
-import { UserContext } from "../../../context/userContext";
-
+import { testAtom } from "../../atoms/testAtom";
+import { useAtom } from "jotai";
 
 function Avatar() {
+	//passing userAtom object as initial state
+	const [user] = useAtom(testAtom);
 
-    //get user info from atom
-   const {user} = useContext(UserContext);
 
 	return (
 		<>

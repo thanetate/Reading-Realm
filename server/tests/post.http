@@ -1,0 +1,32 @@
+### Create Post
+### Create Post
+POST http://localhost:8000/api/posts
+Content-Type: application/json
+
+{
+  "userId": "670861de666e7bf50f0aa7d3",
+  "title": "Title Test",
+  "author": "Author Test",
+  "content": "This is a sample post content."
+}
+
+### Get All Posts for a User
+GET http://localhost:8000/api/posts/670861de666e7bf50f0aa7d3
+
+### Get Post by ID for a User
+GET http://localhost:8000/api/posts/670861de666e7bf50f0aa7d3/672671dd596874a270cba42d
+
+### Update Post
+PUT http://localhost:8000/api/posts
+Content-Type: application/json
+
+{
+  "userId": "670861de666e7bf50f0aa7d3",
+  "postId": "672671dd596874a270cba42d",
+  "title": "Updated Title Test",
+  "author": "Updated Author Test",
+  "content": "This is updated sample post content."
+}
+
+### Delete Post
+DELETE http://localhost:8000/api/posts/670861de666e7bf50f0aa7d3/672671dd596874a270cba42d

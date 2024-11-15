@@ -1,11 +1,10 @@
-import Header from "../components/Header/Header"
-import AccountPreferences from '../components/AccountPreferences/AccountPreferences';
-import Security from '../components/Signin&Security/Security';
+import Header from "../components/Header/Header";
+import AccountPreferences from "../components/AccountPreferences/AccountPreferences";
+import Security from "../components/Signin&Security/Security";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
 function Settings() {
-    
 	//i am single page rendering for the different tabs in settings
 	const [currentCard, setCurrentCard] = useState("account-preferences");
 
@@ -56,10 +55,12 @@ function Settings() {
 						<div className="nav-name">Sign in & security</div>
 					</button>
 				</div>
-				<div className="settings-middle">{renderCard()}</div>
+				<div className="settings-middle-container">
+					<div className="settings-middle">{renderCard()}</div>
+				</div>
 			</div>
 		</>
 	);
-};
+}
 
-export default Settings
+export default Settings;

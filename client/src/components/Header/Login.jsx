@@ -1,8 +1,6 @@
 import { GoogleLogin } from '@react-oauth/google';
 import { Link } from 'react-router-dom';
 
-//this is our profile page when user has NOT logged in yet.
-//TODO: somehow signal that the user has logged in
 const Login = () => {
 
     //unit tests can be expanded later on

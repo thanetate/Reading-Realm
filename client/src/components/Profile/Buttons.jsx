@@ -1,12 +1,12 @@
-import { useContext } from "react";
-import { UserContext } from "../../../context/userContext";
+import { useAtom } from "jotai";
 import { useNavigate } from "react-router-dom";
+import { logoutUserAtom } from "../../atoms/testAtom";
 
 function Buttons() {
-	
-    const {logout} = useContext(UserContext);
+	//logout function inside of Atoms
+	const [, logoutUser] = useAtom(logoutUserAtom);
 
-    //navigation for the settings page
+	//navigation for the settings page
 	const navigate = useNavigate();
 	const handleMoreClick = () => {
 		navigate("/dashboard/settings");
@@ -15,12 +15,11 @@ function Buttons() {
 	//logout btn
 	const handleLogout = () => {
 		console.log("logging out...");
-		//logout function already redirects you to login page
-		logout();
+		logoutUser();
+		navigate("/login");
 	};
-    
-    
-    return (
+
+	return (
 		<>
 			<button className="logout" onClick={handleLogout}>
 				Log out

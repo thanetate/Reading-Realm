@@ -1,12 +1,9 @@
-import { useContext } from "react";
-import { UserContext } from "../../../context/userContext";
-
+import { useAtom } from "jotai";
+import { testAtom } from "../../atoms/testAtom";
 
 function Description() {
-
-    const {user} = useContext(UserContext);
-
-    console.log("Rendering profile", user);
+	//doesn't change any data so no need for setUser
+	const [user] = useAtom(testAtom);
 
 	return (
 		<>

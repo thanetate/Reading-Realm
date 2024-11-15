@@ -1,11 +1,16 @@
-import Profile from "../components/Profile/Profile";
+import "../Styles/Dashboard.css";
 import { Link } from "react-router-dom";
+import { useUser } from "../hooks/useUser";
 import { LoginWrapper } from "./LoginWrapper";
-import { People } from "../components/People/People";
-import ReadingGoalsProfilePage from "../components/Profile/ReadingGoalsProfilePage";
-import '../Styles/Dashboard.css'; // Adjust the path as needed
+import Profile from "../components/Profile/Profile";
+//import ReadingGoalsProfilePage from "../components/Profile/ReadingGoalsProfilePage";
 
 function Dashboard() {
+	const { user, localStorageUser } = useUser();
+
+	console.log("User:", user);
+	console.log("LS User:", localStorageUser);
+
 	return (
 		<LoginWrapper>
 			<div className="user-section">
@@ -15,17 +20,8 @@ function Dashboard() {
 					</button>
 				</Link>
 			</div>
-
 			<Profile />
-			<People />
-			{/* TODO: add Posts here */}
-
-			<div className="d-card-bottom-right">
-				<div className="bottom-right-title">Reading Goals</div>
-				<div className="d-readingGoal">
-					<ReadingGoalsProfilePage />
-				</div>
-			</div>
+			{/* <ReadingGoalsProfilePage /> */}
 		</LoginWrapper>
 	);
 }

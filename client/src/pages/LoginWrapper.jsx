@@ -1,18 +1,31 @@
-import { useContext } from "react";
-import { UserContext } from "../../context/userContext";
 import { Navigate } from "react-router-dom";
 import PropTypes from "prop-types";
+import { useAtom } from "jotai";
+import { testAtom } from "../atoms/testAtom";
+import { useEffect, useState } from "react";
 
 export function LoginWrapper(props) {
-    const {user} = useContext(UserContext);
+	const [user] = useAtom(testAtom);
+	const [loading, setLoading] = useState(true);
 
-    if (!user) {
-        return <Navigate to='/login'/>;
-    }
+	useEffect(() => {
+		//because we fetch local storage on mount
+		if (user !== undefined) {
+			setLoading(false); //user data is ready
+		}
+	}, [user]);
 
-    return props.children;
+	if (loading) {
+		return null;
+	}
+
+	if (!user) {
+		return <Navigate to="/login" />;
+	}
+
+	return props.children;
 }
 
 LoginWrapper.propTypes = {
-    children: PropTypes.node.isRequired
-}
+	children: PropTypes.node.isRequired,
+};

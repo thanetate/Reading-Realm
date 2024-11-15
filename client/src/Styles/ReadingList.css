@@ -119,6 +119,24 @@
     font-size: 1rem;
     color: #666;
 }
+.book-item button {
+    background-color: #c0392b; /* Red color similar to your navigation buttons */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px; /* Rounded corners to match the app's theme */
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.book-item button:hover {
+    background-color: #e74c3c; /* Slightly lighter red for hover effect */
+}
+
+.book-item button:focus {
+    outline: none; /* Remove outline on focus */
+}
 
 
 

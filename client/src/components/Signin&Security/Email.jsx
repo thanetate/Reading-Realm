@@ -1,10 +1,10 @@
-import { useContext } from "react";
-import { UserContext } from "../../../context/userContext";
-
+import { testAtom } from "../../atoms/testAtom";
+import { useAtom } from "jotai";
 
 function Email () {
 
-    const {user} = useContext(UserContext);
+    //we aren't changing the users data so no need for setUser
+    const [user] = useAtom(testAtom);
 
     return (
         <>

@@ -1,22 +1,165 @@
 .homepage {
-    background-color: #f0f0f0;
-    width: 100vw;
-    height: 100vh;
+	background-color: #f0f0f0;
+	width: 100vw;
+	height: calc(100vh - 10px);
 }
 
 /* Posts Section */
 .home-card-post {
-    background-color: white;
-    border-radius: 10px;
-    width: calc(100vw - 800px);
-    height: 200px;
-    overflow: hidden;
-	margin-left: 40px;
-    margin-top: 20px;
+	background-color: white;
+	border-radius: 10px;
+	width: calc(70vw - 45px);
+	height: 200px;
+	overflow: hidden;
+	margin-left: 15px;
+	margin-top: 15px;
+	position: relative;
 }
-.home-post-name {
+.posts-input {
+	outline: none;
+	border: none;
+	background: none;
+	cursor: pointer;
+	font-size: medium;
+	margin-left: 15px;
+	width: calc(100% - 150px);
+}
+.importmodal-container input {
+	outline: none;
+	border: solid;
+	border-color: #c82b2d;
+	border-radius: 10px;
+	margin-top: 10px;
+	padding: 10px;
+	background: none;
+	cursor: pointer;
+	font-size: medium;
+	overflow-x: hidden;
+}
+.importbook-btn {
+	width: 150px;
+	height: 35px;
+	border-color: #c82b2d;
+	border-style: solid;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #c82b2d;
+	background-color: white;
+	border-radius: 10px;
+	position: relative;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.importbook-btn:hover {
+	background-color: #c82b2d;
+	transform: scale(1.05);
+	color: white;
+}
+.posts-btn {
+	width: 100px;
+	height: 35px;
+	border-color: #c82b2d;
+	border-style: solid;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	background-color: #c82b2d;
+	border-radius: 10px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	margin-right: 15px;
+	margin-bottom: 15px;
+	transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.posts-btn:hover {
+	background-color: white;
+	transform: scale(1.05);
+	color: #c82b2d;
+}
+/* Feed Section */
+.feed-card {
+	background-color: white;
+	border-radius: 10px;
+	width: calc(70vw - 45px);
+	height: calc(100vh - 320px);
+	overflow: hidden;
+	margin-left: 15px;
+	margin-top: 15px;
+	position: relative;
+}
+.feed-tabs {
+	font-weight: 500;
+	font-size: larger;
+	padding: 15px;
+	margin-bottom: 25px;
+}
+.feed-tabs button {
+	border: none;
+	background: none;
+	cursor: pointer;
+	outline: none;
+	font-size: larger;
+	font-weight: 500;
+}
+.feed-down {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: 10px;
+}
+
+/* Bookshelf Section */
+.bookshelf-card {
+	position: absolute;
+	right: 0;
+	top: 0;
+	background-color: white;
+	border-radius: 10px;
+	width: 30vw;
+	height: calc(50vh - 62.5px);
+	margin-top: 95px;
+	margin-right: 50px;
+	margin-bottom: 20px;
+}
+.bookshelf-title {
 	font-weight: 500;
 	font-size: x-large;
-	padding: 20px;
+	padding: 15px;
 	margin-bottom: 10px;
+}
+.inner-bookshelf-container {
+	display: flex;
+	flex-direction: column;
+	margin-left: 20px;
+	margin-right: 20px;
+	width: 200px;
+	display: flex;
+	text-align: center;
+	justify-content: center;
+}
+.inner-card {
+	width: 200px;
+	height: 200px;
+	background-color: #f0f0f0;
+	border-radius: 10px;
+}
+.inner-card-container {
+	overflow-x: auto;
+	display: flex;
+	flex-direction: row;
+	margin-right: 20px;
+	padding-bottom: 15px;
+	gap: 20px;
+	white-space: nowrap;
+}
+.rightarrow {
+	position: absolute;
+	right: 0;
+	bottom: 10px;
+	margin-right: 10px;
 }

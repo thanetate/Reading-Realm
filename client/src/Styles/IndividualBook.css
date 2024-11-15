@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+.individual-book-page {
+    background-color: #f0f0f0;
+    width: auto;
+    display: flex;
+}
+
+/* Left side of the page */
+.individual-img-div {
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.individual-book-img {
+    border-radius: 5px;
+	box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+	border-style: solid;
+    border-width: 0.75px;
+	border-color: rgba(0, 0, 0, 0.2);
+    height: 585px;
+    width: 385px;
+}
+
+.individual-book-left-column {
+    background-color: #ffffff;
+    width: 35%;
+    border-radius: 10px;
+    height: calc(100vh -10px);
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Add to favorites button */
+.individual-book-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    flex-direction: row;
+}
+
+.individual-book-addButton {
+    background-color: #a52828;
+    color: white;
+    border-color: #C51E24;
+    border-style: solid;
+    padding: 10px 20px;
+    font-size: 26px;
+    cursor: pointer;
+    margin-top: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 3px #000000;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 280px;
+}
+
+.individual-book-addButton:hover {
+    background-color: white;
+    transform: scale(1.05);
+    color: #c82b2d;
+}
+
+.individual-book-list-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    transform: translateX(50%); 
+    transform: translateY(82%);
+    width: 70%;
+}
+
+.individual-book-list-dropdown-content a {
+    color: black;
+    font-size: 16px;
+    font-weight: 300;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.individual-book-list-dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.individual-book-dropdown:hover .individual-book-list-dropdown-content {
+    display: block;
+}
+
+/* Right Column - Title, Description, etc. */
+.individual-book-right-column {
+    width: auto;
+    height: calc(100vh - 10px);
+    padding: 20px;
+    margin-left: 10px;
+}
+
+.individual-book-object {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.individual-book-title {
+    font-size: 64px;
+    font-style: medium;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.individual-book-author {
+    font-size: 34px;
+    font-style: medium;
+    font-weight: 300;
+    margin-top: 0;
+    margin-left: 5px;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.individual-book-description {
+    font-size: 20px;
+    font-style: light;
+    font-weight: 300;
+    margin-top: 10px;
+}
+
+/* Rating Stars for Individual Books */
+
+.individual-book-stars {
+    font-size: 36px;
+	margin-top: 10px;
+	margin-left: 5px;
+    flex-direction: row;
+    display: flex;
+}
+.individual-book-stars .fa {
+	margin-right: 5px;
+}
+.checked {
+	color: #C82B2D;
+}
+
+.individual-book-rating-desc {
+    font-size: 20px;
+    font-style: medium;
+    font-weight: 300;
+    margin-top: 0;
+    margin-left: 5px;
+}
+
+
+.individual-book-ratings-title {
+    font-size: 36px;
+    font-style: medium;
+    font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: 0;
+}

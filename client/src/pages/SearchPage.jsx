@@ -1,7 +1,8 @@
-import React,{ useState }  from 'react';
+import { useState }  from 'react';
 import { useLocation } from 'react-router-dom';
 import BookCard from '../components/Book/BookCard';
-import Header from '../components/Header/Header';
+import Header from '../Components/Header/Header';
+import { Link } from 'react-router-dom';
 
 
 // 10/17/24 update - got the load more button working and fixed the new 
@@ -39,11 +40,11 @@ const SearchPage = () => {
                 setBooks(prevBooks => [...prevBooks, ...newBooks]); // Update books state
                 setOffset(prevOffset => prevOffset + value); // Increment offset by 10
                 setLimit(prevLimit => prevLimit + value); // Increment limit by 10'
-                console.log(data); //Debug statement
+                // console.log(data); //Debug statement
             })
             .catch(error => console.error('Error: ', error)); // Catch any errors
         };
-    
+
 
     // Return book search results
     // View More button to load more books
@@ -51,6 +52,15 @@ const SearchPage = () => {
         <>
         <div>
             <Header />
+
+            <div className="user-section">
+				<Link to="/dashboard">
+					<button>
+						<img src="/icons/user-line.svg" alt="user icon" />
+					</button>
+				</Link>
+			</div>
+
             <div className="search-page">
             <h1>Displaying search results for "{searchResult}"...</h1>
             <div className="book-card-search-page">
@@ -62,6 +72,8 @@ const SearchPage = () => {
                             title={book.volumeInfo?.title || "No title available"}
                             author={book.volumeInfo?.authors?.join(", ") || "No author available"}
                             id={book?.id || "No ID available"} //{/* Parameter passing for individual book page */} 
+                            // trying to add higher rez photos
+                            // image={`https://books.google.com/books/publisher/content/images/frontcover/${encodeURIComponent(bookId)}?fife=w450-h650&source=gbs_api` || "./icons/NO_COVER.jpeg"}
                         />
                     </li>
                 ))}

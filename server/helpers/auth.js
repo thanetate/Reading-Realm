@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 // Uses bcrypt to hash a plain text password
 const hashPassword = (password) => {

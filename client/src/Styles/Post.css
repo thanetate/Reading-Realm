@@ -1,0 +1,122 @@
+.postPageContainer {
+	width: 100vw;
+	height: calc(100vh - 80px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #f0f0f0;
+}
+.postCardContainer {
+	background-color: white;
+	width: 50vw;
+	height: 50vh;
+	border-radius: 10px;
+	padding: 15px;
+	margin-top: -200px;
+}
+.postCardContainer input, 
+.postCardContainer button {
+	display: flex;
+	flex-direction: column;
+}
+.postTitle {
+	font-size: large;
+	font-weight: 600;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 10px;
+	border: none;
+	width: calc(100% - 30px);
+}
+input:focus {
+	outline: none;
+}
+.postAuthor {
+    font-size: small;
+	margin-left: 15px;
+    padding: 5px;  
+    border: none;
+    width: calc(100% - 30px);
+}
+.postContent {
+    margin-left: 15px;
+	margin-right: 15px;
+	margin-top: 15px;
+	font-size: small;
+	white-space: normal;
+	overflow-y: scroll;
+	line-height: 1.8em;
+	height: 190px;
+	width: calc(100% - 30px);
+	resize: none;
+	background-color: #f0f0f0;
+	outline: none;
+	box-shadow: none;
+	border-style: none;
+	border-radius: 10px;
+    padding: 5px;
+}
+.user-section {
+	position: absolute;
+	right: 0;
+	top: 0;
+	margin-top: 20px;
+	margin-right: 50px;
+}
+.user-section button {
+	background: none;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+.buttonsContainer {
+    display: flex;
+    flex-direction: row;
+}
+.updatePost {
+	border-color: #c82b2d;
+	background-color: white;
+	color: #c82b2d;
+	border-style: solid;
+	padding: 5px;
+	margin-top: 15px;
+	margin-left: 15px;
+	width: 100px;
+	border-radius: 10px;
+	font-size: small;
+}
+.updatePost:hover {
+	background-color: #c82b2d;
+    transform: scale(1.05);
+	color: white;
+}
+.deletePost {
+	border-color: #c82b2d;
+	background-color: #c82b2d;
+	color: white;
+	border-style: solid;
+	padding: 5px;
+	margin-top: 15px;
+	margin-left: 15px;
+	width: 100px;
+	border-radius: 10px;
+	font-size: small;
+}
+.deletePost:hover {
+	background-color: white;
+    transform: scale(1.05);
+	color: #c82b2d;
+}
+.user-section {
+	position: absolute;
+	right: 0;
+	top: 0;
+	margin-top: 15px;
+	margin-right: 50px;
+}
+.user-section button {
+	background: none;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}

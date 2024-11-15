@@ -1,39 +1,25 @@
-import { useContext, useState } from "react";
-import { UserContext } from "../../../context/userContext";
+import { useState } from "react";
 import Modal from "../IconModal/IconModal";
-import { useNavigate} from 'react-router-dom';
- 
+import { useAtom } from "jotai";
+import { testAtom } from "../../atoms/testAtom";
+import { updateUserAtom } from "../../atoms/testAtom";
+
 function Banner() {
+	//this atom calls the details in the user object
+	const [user] = useAtom(testAtom);
+	//this atom is used to update info about the user
+	const [, updateUser] = useAtom(updateUserAtom);
 
-    //TODO: move all of this into actions
-
-    const { user, updateUser } = useContext(UserContext);
-    //navigation for the settings page
-	const navigate = useNavigate();
-	//state that manages input value
-	const [background, setBackground] = useState(user ? user.background : "");
-    //handles input changes
-	const handleBackgroundChange = (url) => setBackground(url);
-    //handle form submissions
-	const handleSubmit = (e) => {
-		//prevent default form submission behavior
-		e.preventDefault();
-		//check if user object already exists and has a valid id
-		if (user && user._id) {
-			//create an object with the new details
-			const newDetails = { background };
-			//log new details for error handling
-			console.log("Submitting new details:", newDetails);
-			//call the update user function
-			updateUser(user._id, newDetails);
-			//TODO: add some sort of loading spinner
-			//for now lets just redirect them to dashboard
-			navigate("/dashboard");
-		} else {
-			console.error("User ID is not available");
+	//calls the function that updates the background change to the db
+	const handleBackgroundChange = (url) => {
+		if (user) {
+			const updatedUserDetails = { background: url };
+			console.log("Updating user with ID:", user._id);
+			updateUser({ userId: user._id, newDetails: updatedUserDetails });
 		}
 	};
-    //modal
+
+	//modal
 	const [showModal, setShowModal] = useState(false);
 	const handleOpenModal = () => {
 		setShowModal(true);
@@ -45,15 +31,19 @@ function Banner() {
 	return (
 		<>
 			<div className="main-banner">
-				{background && (
-					<img src={background} alt="Background Image" className="background" />
+				{user.background && (
+					<img
+						src={user.background}
+						alt="Background Image"
+						className="background"
+					/>
 				)}
 				<button className="icon-container" onClick={handleOpenModal}>
 					<img src="./icons/gear.svg" alt="Gear Icon" />
 				</button>
 			</div>
 
-            {/* TODO: Make this a for loop */}
+			{/* TODO: Make this a for loop */}
 			<Modal show={showModal} onClose={handleCloseModal}>
 				<div className="background-container">
 					<button
@@ -135,7 +125,7 @@ function Banner() {
 					<button className="modal-cancel-btn" onClick={handleCloseModal}>
 						Cancel
 					</button>
-					<button className="modal-update-btn" onClick={handleSubmit}>
+					<button className="modal-update-btn" onClick={handleCloseModal}>
 						Update
 					</button>
 				</div>

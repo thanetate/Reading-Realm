@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import Search from './Search'; // Import Search component
+import { useNavigate } from 'react-router-dom';
+import Search from './Search'; 
 
 const Books = () => {
     const navigate = useNavigate(); // Hook for navigation
@@ -22,7 +22,7 @@ const Books = () => {
         setBooks([]); // Clear previous books
             
         // Fetch data from Google Books API
-        fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(searchField)}&key=${encodeURIComponent(API_KEY)}&startIndex=${encodeURIComponent(offset)}&maxResults=${encodeURIComponent(limit)}`)
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(searchField)}&orderBy=relevance&key=${encodeURIComponent(API_KEY)}&startIndex=${encodeURIComponent(offset)}&maxResults=${encodeURIComponent(limit)}`)
 
             .then(response => {
                 if (!response.ok) {
@@ -39,12 +39,14 @@ const Books = () => {
                 if (offset === 0) {
                     navigate('/search-page', { state: { books: [...books, ...newBooks], searchField } }); 
                 } 
-
+                // newBooks.forEach(book => {
+                //     console.log(book.id); // Log each book's ID
+                // });
                 // Reloads the page upon submitting a new search reslts
                 // This line of code fixes the bug with the view more button
                 // and new search results not rendering after using it.
                 window.location.reload(); // Reload the page 
-                console.log(data); //Debug statement
+                // console.log(data); //Debug statement
 
             })
             .catch(error => console.error('Error: ', error)); // Catch any errors

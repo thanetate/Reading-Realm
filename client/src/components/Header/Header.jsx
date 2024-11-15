@@ -1,36 +1,23 @@
-import { Link } from "react-router-dom";
-// import { UserContext } from "../../../context/userContext";
-// import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Books from "../Book/Book";
 
 function Header() {
-	//const { user } = useContext(UserContext);
+
+	const navigate = useNavigate();
+	const handleReadingList = () => {
+		navigate("/reading-list");
+	};
 
 	return (
 		<>
 			<div className="header">
-				{/* Logo Icon */}
 				<div className="logo">
 					<Link to="/">
 						<img src="/icons/Reading Realm Logo Copy.png" alt="logo" />
 					</Link>
 				</div>
-
-				{/* {user ? (
-					<Link to="/dashboard">
-						<button>
-							<img src="/icons/user-line.svg" alt="user icon" />
-						</button>
-					</Link>
-				) : (
-					<Link to="/login">
-						<button>
-							<img src="/icons/user-line.svg" alt="user icon" />
-						</button>
-					</Link>
-				)} */}
-				
 				<Books />
+				<button className="reading-list-header-btn" onClick={handleReadingList}>Reading Lists</button>
 			</div>
 		</>
 	);

@@ -1,49 +1,46 @@
+import { useAtom } from "jotai";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import Header from "../components/Header/Header";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { UserContext } from "../../context/userContext";
+import Header from "../components/Header/Header";
+import { testAtom } from "../atoms/testAtom";
 
 export default function Login() {
-
-	const { setUser } = useContext(UserContext);
-
-	//navigate
+	//access the userAtom to set user state upon successful login
+	const [, setUser] = useAtom(testAtom);
+	
+	//navigation
 	const navigate = useNavigate();
-	//state to hold email and password input values
+
+	//local state to handle form inputs
 	const [data, setData] = useState({
 		email: "",
 		password: "",
 	});
 
-	//handles login page
+	//handle login form submission
 	const loginUser = async (e) => {
-		//prevents default form submit
 		e.preventDefault();
-		//destruct's the name email and password
 		const { email, password } = data;
+
 		try {
-			//sends a POST request to the /login endpoint
-			const res = await axios.post("/login", {
-				email,
-				password,
-			});
-			//toast error
+			//sends POST request to /login endpoint
+			const res = await axios.post("/login", { email, password });
+
 			if (res.data.error) {
-				toast.error(data.error);
+				toast.error(res.data.error);
 			} else {
-				console.log('Login response', res.data);
-				//clear the form data
-				setData({});
+				console.log("Login response", res.data);
+				setData({ email: "", password: "" });
+
+				//update the userAtom with the logged-in user data
 				setUser(res.data.user);
+
 				navigate("/dashboard");
 			}
 		} catch (error) {
-			//display toast error
-			toast.error("An error occurred during registration.");
+			toast.error("An error occurred during login.");
 			console.log(error);
 		}
 	};
@@ -77,4 +74,6 @@ export default function Login() {
 			</form>
 		</>
 	);
-};
+}
+
+

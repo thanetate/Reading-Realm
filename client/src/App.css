@@ -75,7 +75,10 @@ https://coolors.co/c82b2d-ed5229-000000-ffffff-c51e24
 }
 
 .search-area input {
-	border-radius: 2px;
+	border-color: black;
+	border-style: solid;
+	border-radius: 10px;
+	border-width: 2px;
 	width: 50vw;
 	height: 30px;
 	padding-left: 30px;
@@ -86,6 +89,28 @@ https://coolors.co/c82b2d-ed5229-000000-ffffff-c51e24
 	position: absolute;
 	padding: 5px;
 	padding-top: 7px;
+}
+.reading-list-header-btn {
+	position: absolute;
+	right: 10%;
+	top: 4.5%;
+	transform: translateY(-50%);
+	font-size: 12px;
+	background-color: #C82B2D;
+	color: #ffffff;
+	border-color: #c82b2d;
+	border-style: solid;
+	border-radius: 4px;
+	cursor: pointer;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	height: 30px;
+	width: 100px;
+	transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.reading-list-header-btn:hover {
+	background-color: #ffffff;
+	/* transform: scale(1.05); */
+	color: #c82b2d;
 }
 .user-section {
 	position: absolute;
@@ -246,7 +271,7 @@ https://coolors.co/c82b2d-ed5229-000000-ffffff-c51e24
 	display: flex;
 	gap: 20px;
 	justify-content: flex-start;
-	overflow-x: auto;
+	/* overflow-x: auto; */
 	padding: 10px;
 }
 
@@ -336,10 +361,8 @@ https://coolors.co/c82b2d-ed5229-000000-ffffff-c51e24
 .dropdown-btn {
 	background-color: #C51E24;
 	color: white;
-	/* border: none; */
 	border-color: #C51E24;
 	border-style: solid;
-	/* border-radius: 5px; */
 	padding: 10px 20px;
 	font-size: 16px;
 	cursor: pointer;
@@ -426,9 +449,12 @@ https://coolors.co/c82b2d-ed5229-000000-ffffff-c51e24
 .search-page {
 	background-color: #f0f0f0;
 	padding-top: 20px; /* This should fix the header problem (white area being too long)*/
-	border-radius: 10px;
+	padding-bottom: 20px;
+	/* border-radius: 10px; */
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	border: 1px solid #ddd;
+	/* border: 1px solid #ddd; */
+	width: auto;
+	overflow-x: hidden; /*Hiding the scroll bar that keeps appearing for some reason*/
 }
 .search-page h1 {
 	text-align: left;
@@ -439,16 +465,23 @@ https://coolors.co/c82b2d-ed5229-000000-ffffff-c51e24
 #view-more {
 	background-color: #C51E24;
 	color: white;
-	border: none;
-	border-radius: 5px;
+	border-color: #C51E24;
+	border-style: solid;
 	padding: 10px 20px;
 	font-size: 16px;
 	cursor: pointer;
+	margin-top: 0;
+	color: white;
+	background-color: #a52828;
+	border-radius: 10px;
+	box-shadow: 0px 1px 3px #000000;
+	transition: background-color 0.3s ease, transform 0.3s ease; 
 	margin-left: 20px;
-	box-shadow: 0px 1px 3px #000000 inset;
 }
 #view-more:hover {
-	background-color: #f73538;
+	background-color: white;
+    transform: scale(1.05);
+	color: #c82b2d;
 }
 .book-card-search-page {
 	margin-left: 10px;
@@ -458,6 +491,6 @@ https://coolors.co/c82b2d-ed5229-000000-ffffff-c51e24
 
 .book-card-search-page ul {
 	list-style-type: none;
-	padding: 0; /* Remove padding */
-	margin: 0; /* Remove margins */
+	padding: 0; 
+	margin: 0; 
 }

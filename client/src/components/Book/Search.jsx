@@ -14,7 +14,7 @@ const Search = ({ searchBook, handleSearch, searchField }) => {
                     onChange={handleSearch} 
                     type="text"
                     value={searchField}
-                    placeholder="Search for books, authors, and users..."
+                    placeholder="Search for books or authors..."
                 />
                 {/* <button type="submit">Search</button> */}
             </form>
