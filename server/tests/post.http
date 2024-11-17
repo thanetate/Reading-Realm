@@ -30,3 +30,6 @@ Content-Type: application/json
 
 ### Delete Post
 DELETE http://localhost:8000/api/posts/670861de666e7bf50f0aa7d3/672671dd596874a270cba42d
+
+### Get All Posts
+GET http://localhost:8000/api/posts

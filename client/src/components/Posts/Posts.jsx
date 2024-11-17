@@ -24,7 +24,8 @@ export function Posts() {
 			<div className="d-card-post">
 				<div className="post-name">Posts</div>
 				<div className="post-main-container">
-					{posts.map((post, index) => (
+					{/* {posts.map((post, index) => ( */}
+					{posts.slice().reverse().map((post, index) => (
 						<div key={index} className="p-container">
 							<div className="p-title">{post.title}</div>
 							<div className="p-author">{post.author}</div>

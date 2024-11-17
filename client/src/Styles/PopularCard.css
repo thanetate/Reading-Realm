@@ -1,92 +1,15 @@
-/* .popular-book-card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 50px;
-    margin-top: 10px;
-    /* margin-left: 10px;
-    align-items: center;
-    width: 100%;
-}
- */
-
-
-/* Popular Section - FIX SOONER RATHER THAN LATER*/
-/* .popular-card {
-	position: absolute;
-	right: 0;
-	bottom: 0;
-	background-color: white;
-	border-radius: 10px;
-	width: 30vw;
-	/* height: calc(50vh - 62.5px); 
-	height: calc(100vh - 118px);
-	margin-right: 50px;
-	margin-bottom: 5px;
-}
-.popular-title {
-	font-weight: 500;
-	font-size: x-large;
-	padding: 15px;
-	margin-bottom: 10px;
-	text-align: center;
-}
-.inner-popular-container {
-	display: flex;
-	flex-direction: column;
-	/* margin-left: 20px; */
-	/* margin-right: 20px; 
-	width: 200px;
-	text-align: center;
-	justify-content: center;
-}
-.inner-popular-container ul {
-	list-style-type: none;
-	padding: 0; 
-	margin: 0; 
-}
-.inner-popular-card-container {
-	overflow-x: auto;
-	display: flex;
-	flex-direction: column;
-	/* margin-right: 20px; 
-	padding-bottom: 15px;
-	gap: 20px;
-	white-space: nowrap;
-	justify-content: center;
-	align-items: center;
-} */
-
-/* Need to find the parent for the popular books*/
-/* New CSS */
-/* .popularCardContainer {
-    position: absolute;
-    width: 200px;
-    height: 100vh;
-}
-.popular-book-card-container {
-    position: relative;
-    overflow-y: scroll;
-}
-
-.popular-books {
-    display: flex;
-	flex-direction: column;
-	text-align: center;
-	justify-content: center;
-} */
 
 .popular-card {
     position: absolute;
     right: 0;
-    bottom: 0;
     background-color: white;
     border-radius: 10px;
-    width: 30vw;
+    width: 29vw;
     height: calc(100vh - 105px);
+    top: 0;
     margin-right: 15px;
     margin-bottom: 15px;
+    margin-top: 90px;
 }
 .popular-title {
 	font-weight: 500;

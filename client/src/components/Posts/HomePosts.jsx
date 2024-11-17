@@ -6,6 +6,7 @@ import Modal from "../IconModal/IconModal";
 import { useEffect } from "react";
 import { atom } from "jotai";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 // Define an atom to store the username
 const titleAtom = atom(localStorage.getItem("title") || "");
@@ -16,6 +17,7 @@ function HomePost() {
 	//get user id and create a post atom
 	const [user, setUser] = useAtom(testAtom);
 	const [, createPost] = useAtom(createPostAtom);
+	const navigate = useNavigate();
 
 	//local state to store the values
 	const [title, setTitle] = useAtom(titleAtom);
@@ -68,6 +70,8 @@ function HomePost() {
 				setTitle("");
 				setAuthor("");
 				setContent("");
+				//navigate to the dashboard page
+				navigate("/dashboard");
 			} catch (error) {
 				console.error("Error creating post:", error);
 			}

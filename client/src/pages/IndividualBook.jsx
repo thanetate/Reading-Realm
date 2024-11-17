@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function IndividualBook() {
 	const location = useLocation(); // Get location object from react-router-dom
@@ -36,7 +37,7 @@ function IndividualBook() {
 			})
 	
 			.then(data => {
-				// console.log(data); //Debug statement
+				//console.log(data); //Debug statement
 				setBooks(data); // Update books state
 
 			})
@@ -81,9 +82,26 @@ function IndividualBook() {
   return (
 		<>
 			<Header />
+
+			<div className="user-section">
+				<Link to="/dashboard">
+					<button>
+						<img src="/icons/user-line.svg" alt="user icon" />
+					</button>
+				</Link>
+			</div>
+
 			{/* Load the individual book details */}
 			<div className="individual-book-page">
-		
+				<div className="individual-book-column-containers">
+	
+					<div className="individual-book-share">
+						<i className="fa fa-share-alt"
+							onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`, "_blank")}
+							style={{ cursor: 'pointer' }}
+							></i>
+					</div>
+					
 				{/* Left Column - book cover image, add to favorites button */}
 				<div className="individual-book-left-column">
 					<div className="individual-img-div">
@@ -108,6 +126,13 @@ function IndividualBook() {
                             <a href onClick={() => addToList('wantToRead')} style={{ cursor: 'pointer' }}>Want to Read</a>
                         </div>
 					</div>
+					
+					<div className="individual-book-price">
+							<button className="individual-book-price-button"
+								onClick={() => window.open(books.saleInfo?.buyLink || books.saleInfo?.retailPrice?.buyLink || books.saleInfo?.listPrice?.buyLink || books.saleInfo?.retailPrice?.amount || books.saleInfo?.listPrice?.amount || "", "_blank")}	
+								style={{ cursor: 'pointer' }}
+								>Buy for ${books.saleInfo?.retailPrice?.amount || ""}</button>
+						</div>
 				</div>
 
 				<div className="individual-book-object">
@@ -143,6 +168,7 @@ function IndividualBook() {
 
 						</div>
 					</div>
+				</div>
 				</div>
 			</div>
 			

@@ -9,6 +9,7 @@ const {
     updatePost,
     deletePost,
     getUserPosts,
+    getFeed,
 } = require("../controllers/postController");
 
 //middleware
@@ -25,5 +26,6 @@ router.get('/posts/:userId', getUserPosts);
 router.get("/posts/:userId/:postId", getPostById);
 router.put("/posts", updatePost);
 router.delete("/posts/:userId/:postId", deletePost);
+router.get("/posts", getFeed);
 
 module.exports = router;

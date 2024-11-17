@@ -7,39 +7,56 @@ body, html {
     font-family: "Poppins", sans-serif;
 }
 
+.individual-book-share .fa {
+    font-size: 32px;
+    right: 16px;
+    top: 8px;
+    position: absolute;
+}
+
 .individual-book-page {
     background-color: #f0f0f0;
-    width: auto;
     display: flex;
+    width: 100%;
+	height: calc(100vh - 10px);
+    justify-content: center;
+    align-items: center;
+}
+
+.individual-book-column-containers {
+    display: flex;
+    position: relative;
+    width: 98%;
+    height: 96%;
+    background-color: white;
+    border-radius: 10px; 
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Left side of the page */
 .individual-img-div {
-    display: flex; 
-    flex-direction: row; 
+    display: flex;
+    flex-direction: row;
     align-items: center; 
     justify-content: center;
 }
 
 .individual-book-img {
-    border-radius: 5px;
+    border-radius: 10px;
 	box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
 	border-style: solid;
     border-width: 0.75px;
 	border-color: rgba(0, 0, 0, 0.2);
-    height: 585px;
-    width: 385px;
+    height: 500px;
+    width: 300px;
 }
 
 .individual-book-left-column {
-    background-color: #ffffff;
     width: 35%;
     border-radius: 10px;
     height: calc(100vh -10px);
     padding: 20px;
     margin-top: 20px;
-    margin-left: 20px;
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Add to favorites button */
@@ -52,18 +69,18 @@ body, html {
 }
 
 .individual-book-addButton {
-    background-color: #a52828;
+    background-color: #C82B2D;
     color: white;
-    border-color: #C51E24;
+    border-color: #C82B2D;
     border-style: solid;
     padding: 10px 20px;
-    font-size: 26px;
+    font-size: 18px;
     cursor: pointer;
     margin-top: 25px;
     border-radius: 10px;
     box-shadow: 0px 1px 3px #000000;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    width: 280px;
+    width: 200px;
 }
 
 .individual-book-addButton:hover {
@@ -80,8 +97,8 @@ body, html {
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     transform: translateX(50%); 
-    transform: translateY(82%);
-    width: 70%;
+    transform: translateY(78%);
+    width: 56%;
 }
 
 .individual-book-list-dropdown-content a {
@@ -101,24 +118,52 @@ body, html {
     display: block;
 }
 
+.individual-book-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.individual-book-price-button {
+    background-color: white;
+    color: #C82B2D;
+    border-color: #C82B2D;
+    border-style: solid;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 3px #000000;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 200px;
+
+}
+.individual-book-price-button:hover {
+    background-color: #C82B2D;
+    color: white;
+    transform: scale(1.05);
+}
+
 /* Right Column - Title, Description, etc. */
 .individual-book-right-column {
-    width: auto;
+    width: 95%;
     height: calc(100vh - 10px);
-    padding: 20px;
-    margin-left: 10px;
+    padding: 10px;
+    padding-left: 0;
+    margin-top: 10px;
 }
 
 .individual-book-object {
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 100%;
 }
 
 .individual-book-title {
-    font-size: 64px;
+    font-size: 60px;
     font-style: medium;
-    font-weight: 500;
+    font-weight: 400;
     margin-top: 20px;
     margin-bottom: 0;
     padding: 0;
@@ -129,7 +174,6 @@ body, html {
     font-style: medium;
     font-weight: 300;
     margin-top: 0;
-    margin-left: 5px;
     margin-bottom: 0;
     padding: 0;
 }
@@ -139,6 +183,7 @@ body, html {
     font-style: light;
     font-weight: 300;
     margin-top: 10px;
+    
 }
 
 /* Rating Stars for Individual Books */

@@ -120,10 +120,11 @@
 	margin-top: 15px;
 	margin-left: 15px;
 	margin-right: 15px;
+	margin-bottom: 15px;
 	height: 400px;
 }
 .d-card-container {
-	margin-top: 27px;
+	margin-top: 30px;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -145,12 +146,12 @@
 	gap: 20px;
 	white-space: nowrap;
 	margin-bottom: 0;
-	padding-bottom: 0;
+	padding-bottom: 15px;
 }
 .p-container {
 	background-color: #f0f0f0;
-	width: 450px;
-	height: 350px;
+	width: 400px;
+	height: 400px;
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
@@ -175,7 +176,7 @@
 	overflow-y: scroll;
 	line-height: 1.8em;
 	height: 190px;
-	width: 410px;
+	width: 375px;
 	resize: none;
 	background-color: #f0f0f0;
 	outline: none;

@@ -125,10 +125,34 @@ const deletePost = async (req, res) => {
 	}
 };
 
+const getFeed = async (req, res) => {
+	console.log("getFeed called");
+	try {
+		const { page = 1, limit = 10 } = req.query; //only extract 10 posts per page
+
+		const posts = await PostModel.find()
+			.sort({ createdAt: -1 }) //sort by newest first
+			.skip((page - 1) * limit) //skip the first n posts
+			.limit(Number(limit)); //limit the number of posts to 10
+
+		const totalPosts = await PostModel.countDocuments(); //count the total number of posts
+
+		// Return posts and metadata
+		res.status(200).json({
+			posts,
+			totalPages: Math.ceil(totalPosts / limit),
+			currentPage: Number(page),
+		});
+	} catch (error) {
+		res.status(500).json({ error: error.message });
+	}
+};
+
 module.exports = {
 	createPost,
 	getPostById,
 	updatePost,
 	deletePost,
     getUserPosts,
+	getFeed,
 };

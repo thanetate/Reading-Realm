@@ -52,7 +52,7 @@ const Popular = () => {
                                     id={book.id}
                                     image={book.volumeInfo.imageLinks.thumbnail}
                                     title={book.volumeInfo.title}
-                                    author={book.volumeInfo?.authors?.join(" & ") || "No author available"}
+                                    author={book.volumeInfo?.authors[0]|| "No author available"}
                                     publishDate={book.volumeInfo.publishedDate} />
                             </li>
                         ))}

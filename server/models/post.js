@@ -5,8 +5,8 @@ const postSchema = new mongoose.Schema({
     author: { type: String, default: "" },
     userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, // Link to user
     content: { type: String, default: "" },
-    date: { type: Date, default: Date.now },
-});
+    // date: { type: Date, default: Date.now },
+}, { timestamps: true });
 
 const PostModel = mongoose.model("Post", postSchema);
 module.exports = PostModel;

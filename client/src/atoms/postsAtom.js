@@ -90,3 +90,27 @@ export const deletePostAtom = atom(
 		}
 	}
 );
+
+//atom to store feed
+export const feedPostsAtom = atom([]);
+
+//atom to get feed
+export const fetchFeedPostsAtom = atom(
+	get => get(feedPostsAtom),
+	async (get, set, { page }) => {
+		try {
+			const response = await axios.get(`/api/posts?page=${page}&limit=10`); //limit to 10 posts per page
+			const { posts } = response.data;
+			
+			console.log("Fetched posts from backend:", posts);
+			
+			//this solves the duplicate posts issue
+			const existingPosts = get(feedPostsAtom);
+			const uniquePosts = posts.filter(post => !existingPosts.some(existingPost => existingPost._id === post._id));
+			
+			set(feedPostsAtom, [...existingPosts, ...uniquePosts]); //append new unique posts to existing posts
+		} catch (error) {
+			console.error("Error fetching feed", error);
+		}
+	}
+);
