@@ -1,4 +1,4 @@
-Authentication in the Project
+Authentication in our Project
 
 1. Overview:
    This project uses JWT (JSON Web Tokens) for authentication, 
