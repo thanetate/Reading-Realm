@@ -9,7 +9,7 @@ const Search = ({ searchBook, handleSearch, searchField }) => {
     return (
         <div className="search-area">
             <form onSubmit={searchBook}>
-            <img src='/icons/search-line.svg' alt='search icon'/>
+            <img src='/icons/search-line.svg' alt='search icon' className='search-icon'/>
                 <input 
                     onChange={handleSearch} 
                     type="text"

@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { atom } from "jotai";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import "./HomePosts.css";
 
 // Define an atom to store the username
 const titleAtom = atom(localStorage.getItem("title") || "");
@@ -94,7 +95,7 @@ function HomePost() {
 		<>
 			<div className="home-card-post">
 				<button className="importbook-btn" onClick={handleOpenModal}>
-					Import a Book
+					Book
 				</button>
 				<input
 					type="text"
@@ -103,9 +104,11 @@ function HomePost() {
 					value={content}
 					onChange={handleContentChange}
 				/>
-				<button className="posts-btn" onClick={handleSubmit}>
-					Post
-				</button>
+				<div className="posts-btn-container">
+					<button className="posts-btn" onClick={handleSubmit}>
+						Post
+					</button>
+				</div>
 			</div>
 
 			<Modal show={showModal} onClose={handleCloseModal}>

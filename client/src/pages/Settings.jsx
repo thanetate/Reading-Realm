@@ -1,8 +1,8 @@
 import Header from "../components/Header/Header";
 import AccountPreferences from "../components/AccountPreferences/AccountPreferences";
 import Security from "../components/Signin&Security/Security";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import "../Styles/Settings.css";
 
 function Settings() {
 	//i am single page rendering for the different tabs in settings
@@ -25,38 +25,27 @@ function Settings() {
 
 	return (
 		<>
-			<div className="settings-page-container">
+			<div className="settingsPageContainer">
 				<Header />
-				<div className="user-section">
-					<Link to="/dashboard">
-						<button>
-							<img src="/icons/user-line.svg" alt="user icon" />
+				<div className="settingsCardContainer">
+					<div className="settingsPageNavBar">
+					<h1 className="navBarTitle">Settings</h1>
+						<button
+							 className={`navBarRedirectionContainer ${currentCard === "account-preferences" ? "active" : ""}`}
+							onClick={() => handleNavigation("account-preferences")}
+						>
+							<div className="navBarRedirectionName">Account Preferences</div>
 						</button>
-					</Link>
-				</div>
-				<div className="left-nav">
-					<div className="nav-title">Settings</div>
-					<button
-						className="nav-container"
-						onClick={() => handleNavigation("account-preferences")}
-					>
-						<div className="nav-img">
-							<img src="/icons/profile.svg" alt="profile icon" />
-						</div>
-						<div className="nav-name">Account Preferences</div>
-					</button>
-					<button
-						className="nav-container"
-						onClick={() => handleNavigation("sign-in-security")}
-					>
-						<div className="nav-img">
-							<img src="/icons/security.svg" alt="security icon" />
-						</div>
-						<div className="nav-name">Sign in & security</div>
-					</button>
-				</div>
-				<div className="settings-middle-container">
-					<div className="settings-middle">{renderCard()}</div>
+						<button
+							 className={`navBarRedirectionContainer ${currentCard === "sign-in-security" ? "active" : ""}`}
+							onClick={() => handleNavigation("sign-in-security")}
+						>
+							<div className="navBarRedirectionName">Sign In & Security</div>
+						</button>
+					</div>
+					<div className="settingsMainCard">
+						<div>{renderCard()}</div>
+					</div>
 				</div>
 			</div>
 		</>

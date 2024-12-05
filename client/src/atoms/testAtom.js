@@ -8,6 +8,7 @@ export const testAtom = atom(null);
 export const fetchTestAtom = atom(
 	(get) => get(testAtom),
 	async (get, set) => {
+		console.log("fetchTestAtom called");
 		try {
 			const response = await axios.get("/profile");
 			const userData = response.data;

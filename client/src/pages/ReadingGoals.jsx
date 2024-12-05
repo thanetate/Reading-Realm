@@ -1,12 +1,19 @@
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import { UserContext } from "../../context/userContext";
+import { useAtom } from "jotai";
+import { testAtom } from "../atoms/testAtom";
 import { useNavigate } from "react-router-dom";
+import Confetti from "react-confetti";
+import "../Styles/ReadingGoals.css";
+import Header from "../Components/Header/Header";
+import { Link } from "react-router-dom";
+
+
 
 export default function ReadingGoals() {
     const navigate = useNavigate();
-    const { user } = useContext(UserContext);
+    const [user] = useAtom(testAtom);
     const [goal, setGoal] = useState({
         _id: null,
         totalBooks: 0,
@@ -17,10 +24,11 @@ export default function ReadingGoals() {
 
     const [loading, setLoading] = useState(true);
     const [newBooksRead, setNewBooksRead] = useState(0); // State for new books read input
+    const [showConfetti, setShowConfetti] = useState(false);
 
     useEffect(() => {
-        if (user && user.id) {
-            fetchReadingGoals(user.id);
+        if (user && user._id) {
+            fetchReadingGoals(user._id);
         } else {
             setLoading(true);
         }
@@ -65,7 +73,7 @@ export default function ReadingGoals() {
                 toast.error(response.data.error);
             } else {
                 toast.success(response.data.message);
-                fetchReadingGoals(user.id);
+                fetchReadingGoals(user._id);
             }
         } catch (error) {
             console.error("Error setting new goal:", error);
@@ -78,14 +86,37 @@ export default function ReadingGoals() {
         try {
             // Update the booksRead in the database
             const response = await axios.put("http://localhost:8000/reading-goals/update", {
-                _id: user.id,
+                _id: user._id,
                 booksRead: updatedBooksRead,
             });
     
             if (response.data.error) {
                 toast.error(response.data.error);
             } else {
-                toast.success(response.data.message);
+
+                console.log("updatedBooksRead:", updatedBooksRead, "goal.totalBooks:", goal.totalBooks); //debug
+                if (updatedBooksRead >= goal.totalBooks) {
+                    toast("Congratulations!\n You've completed your reading goal.",
+                        {icon: '🎉',
+                            style: {
+                                textAlign: 'center'
+                            },
+                            
+                        }
+                    );
+
+                    //doesn't work for some reason
+                    console.log("showing confetti");
+                    setShowConfetti(true); // Show confetti on completion of a reading goal
+                    setTimeout(() => setShowConfetti(true), 50);
+                    setTimeout(() => setShowConfetti(false), 3000);
+                    
+                } else {
+                    toast.success(response.data.message);
+                    setShowConfetti(true); // Show confetti on completing a book
+                    setTimeout(() => setShowConfetti(false), 3000);
+                }
+
                 setGoal((prev) => ({
                     ...prev,
                     totalBooks: response.data.readingGoal.totalBooks, // Update totalBooks to reset to 0
@@ -94,6 +125,8 @@ export default function ReadingGoals() {
                     booksRead: response.data.readingGoal.booksRead // Update the booksRead in local state
                 }));
             }
+
+
     
             setNewBooksRead(0); // Reset the input field
         } catch (error) {
@@ -108,38 +141,93 @@ export default function ReadingGoals() {
 
     return (
         <div>
-            <h1>Your Reading Goals</h1>
-            <button className="btn" onClick={goToDashboard}>Back to Dashboard</button>
+             <Header/>
+            <div className="user-section">
+				<Link to="/dashboard">
+					<button>
+						<img src="/icons/user-line.svg" alt="user icon" />
+					</button>
+				</Link>
+			</div>
+           
+            
+        <div className="reading-goals-page">	
+       
 
-            <form onSubmit={handleCreateGoal}>
-                <input
-                    type="number"
-                    placeholder="Total Books"
-                    value={goal.totalBooks || ""}
-                    onChange={(e) => setGoal({ ...goal, totalBooks: e.target.value })}
-                />
-                <input
-                    type="date"
-                    placeholder="Start Date"
-                    value={goal.startDate || ""}
-                    onChange={(e) => setGoal({ ...goal, startDate: e.target.value })}
-                />
-                <input
-                    type="date"
-                    placeholder="End Date"
-                    value={goal.endDate || ""}
-                    onChange={(e) => setGoal({ ...goal, endDate: e.target.value })}
-                />
-                <button type="submit">Set Goal</button>
-            </form>
 
-            {goal.totalBooks > 0 ? (
-                <div>
-                    <h2>Your Current Goal</h2>
-                    <p>Total Books: {goal.totalBooks}</p>
-                    <p>Start Date: {goal.startDate}</p>
-                    <p>End Date: {goal.endDate}</p>
-                    <p>Books Read: {goal.booksRead}</p>
+
+    {/* <h1>Your Reading Goals</h1>
+    <button className="btn" onClick={goToDashboard}>
+        Back to Dashboard
+    </button> */}
+
+    <div className="reading-goals-container">
+        
+        <div className="left-column">
+            <div className="reading-goals-section">
+                <h2>Set a New Goal</h2>
+                <form onSubmit={handleCreateGoal}>
+                    <input
+                        type="number"
+                        placeholder="Total Books"
+                        value={goal.totalBooks || ""}
+                        onChange={(e) => setGoal({ ...goal, totalBooks: e.target.value })}
+                    />
+                    <input
+                        type="date"
+                        placeholder="Start Date"
+                        value={goal.startDate || ""}
+                        onChange={(e) => setGoal({ ...goal, startDate: e.target.value })}
+                    />
+                    <input
+                        type="date"
+                        placeholder="End Date"
+                        value={goal.endDate || ""}
+                        onChange={(e) => setGoal({ ...goal, endDate: e.target.value })}
+                    />
+                    <button type="submit">Set Goal</button>
+                </form>
+            </div>
+        </div>
+
+       
+        <div className="right-column">
+           
+            <div className="reading-goals-section chart-section">
+                <h2>Your Progress Chart</h2>
+                <div className="chart">
+                  
+                    <div
+                        className="bar"
+                        style={{
+                            height: `${goal.totalBooks > 0 ? (goal.booksRead / goal.totalBooks) * 100 : 0}%`,
+                        }}
+                    >
+                        <span>{goal.booksRead}</span>
+                    </div>
+
+                   
+                    <div
+                        className="bar"
+                        style={{
+                            height: `${goal.totalBooks > 0 ? ((goal.totalBooks - goal.booksRead) / goal.totalBooks) * 100 : 0}%`,
+                        }}
+                    >
+                        <span>{goal.totalBooks - goal.booksRead}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div className="reading-goals-section current-goal-section">
+                <h2>Your Current Goal</h2>
+                {goal.totalBooks > 0 ? (
+                    <>
+                        <div className="goal-details">
+                            <p>Total Books: {goal.totalBooks}</p>
+                            <p>Start Date: {goal.startDate}</p>
+                            <p>End Date: {goal.endDate}</p>
+                            <p>Books Read: {goal.booksRead}</p>
+                        </div>
 
                     <input
                         type="number"
@@ -147,53 +235,23 @@ export default function ReadingGoals() {
                         value={newBooksRead} // Bind the value to state
                         onChange={(e) => setNewBooksRead(e.target.value)} // Update state on change
                     />
-                    <button onClick={handleUpdateBooksRead}>Update Books Read</button> {/* Calls function on click */}
-                </div>
-            ) : (
-                <p>No goals set yet.</p>
-            )}
-            <div>
-                <h2>Your Progress Chart</h2>
-                <div className="chart">
-                    <div className="bar" style={{ height: `${goal.totalBooks > 0 ? (goal.booksRead / goal.totalBooks) * 100 : 0}%` }}>
-                        <span>{goal.booksRead}</span>
+                    {showConfetti && <Confetti />}
+                        <button onClick={handleUpdateBooksRead}>Update Books Read</button>
+                    </>
+                ) : (
+                    <p>No goals set yet.</p>
+                )}
+                    </div>
                     </div>
                     <div className="bar" style={{ height: `${goal.totalBooks > 0 ? ((goal.totalBooks - goal.booksRead) / goal.totalBooks) * 100 : 0}%` }}>
                         <span>{goal.totalBooks - goal.booksRead}</span>
-                    </div>
-                </div>
             </div>
-            <style jsx>{`
-                .chart {
-                    display: flex;
-                    align-items: flex-end;
-                    height: 300px; /* Adjust height as needed */
-                    width: 100%;
-                    border: 1px solid #ccc; /* Optional border */
-                }
-                .bar {
-                    flex: 1; /* Each bar takes equal width */
-                    display: flex;
-                    align-items: flex-end;
-                    justify-content: center;
-                    color: white; /* Text color */
-                    transition: height 0.5s; /* Smooth transition for height change */
-                    position: relative; /* For absolute positioning of the label */
-                }
-                .bar span {
-                    position: absolute; /* Absolute positioning for the label */
-                    bottom: 100%; /* Position above the bar */
-                    left: 50%; /* Center the label horizontally */
-                    transform: translateX(-50%); /* Adjust for centering */
-                    margin-bottom: 5px; /* Space between label and bar */
-                }
-                .bar:nth-child(1) {
-                    background-color: rgba(75, 192, 192, 1); /* Books Read */
-                }
-                .bar:nth-child(2) {
-                    background-color: rgba(255, 99, 132, 1); /* Books Left */
-                }
-            `}</style>
+                    <div className="bar" style={{ height: `${goal.totalBooks > 0 ? ((goal.totalBooks - goal.booksRead) / goal.totalBooks) * 100 : 0}%` }}>
+                        <span>{goal.totalBooks - goal.booksRead}</span>
         </div>
+    </div>
+</div>
+</div>
+    
     );
 }

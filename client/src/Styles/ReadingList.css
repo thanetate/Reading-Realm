@@ -1,142 +1,154 @@
-/* Container for the entire reading list page */
+/* New Styling */
+.readingListBackground {
+    width: calc(100vw - 5px);
+	height: calc(100vh - 20px);
+    background-color: #f0f0f0;
+}
+.readingListCardContainer {
+    display: flex;
+    background-color: #f0f0f0;
+}
 .reading-list-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(220, 0, 0, 0.1);
+	flex-direction: row;
 }
-
-/* Styling for the list buttons */
-.list-buttons {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    margin-bottom: 20px;
+.readingListLeftCard {
+    background-color: white;
+	border-radius: 10px;
+	width: 25vw;
+	height: calc(100vh - 110px);
+	margin-left: 15px;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
-
-.list-buttons button {
-    padding: 8px 16px; /* Reduced padding for a sleeker look */
-    border: none;
-    background-color: #e53935;
-    color: white;
-    cursor: pointer;
-    border-radius: 25px; /* Smoother, pill-shaped buttons */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    font-size: 1rem;
-    box-shadow: 0 2px 4px rgba(220, 0, 0, 0.2);
+.leftCardTitle {
+	font-size: x-large;
+	font-weight: 500;
+	padding: 20px;
 }
-
-.list-buttons button:hover {
-    background-color: #d32f2f;
-    box-shadow: 0 4px 6px rgba(220, 0, 0, 0.3); /* Subtle hover shadow */
+.readingListLeftCard button {
+    border-style: none;
+    margin-left: 15px;
+	margin-top: 25px;
+	display: flex;
+	flex-direction: row;
+	background-color: white;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	cursor: pointer;
+	font-size: medium;
 }
-
-.list-buttons button.active {
-    background-color: #b71c1c;
+.readingListLeftCard button.active {
+    color: #c82b2d;
 }
-
-/* Styling for the search bar */
 .search-bar {
     width: 100%;
     margin-bottom: 20px;
 }
-
+.search-bar img {
+    height: 20px;
+    width: auto;
+    position: absolute;
+    padding: 5px;
+    margin-left: 15px;
+    padding-top: 7px;
+}
 .search-bar input {
-    padding: 12px 20px;
-    width: 100%;
-    border: 1px solid #e53935;
-    border-radius: 25px; /* Smoother, pill-shaped search bar */
-    font-size: 1rem;
-    box-shadow: 0 2px 4px rgba(220, 0, 0, 0.1);
-    outline: none;
-    transition: border 0.3s ease;
+    border-color: #c82b2d;
+    color: #c82b2d;
+	border-style: solid;
+	border-radius: 10px;
+	border-width: 2px;
+    margin-left: 15px;
+	width: calc(100% - 70px);
+	height: 30px;
+	padding-left: 30px;
 }
-
-.search-bar input:focus {
-    border: 2px solid #d32f2f;
-}
-
-/* Styling for the list sections */
-.list-section {
-    width: 100%;
-    padding: 20px; /* Increased padding for better spacing */
-    border: 1px solid #ddd;
-    border-radius: 12px; /* Slightly rounded corners */
-    background-color: #fff5f5;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 6px rgba(220, 0, 0, 0.05);
-}
-
-.list-section h2 {
-    font-size: 1.5rem;
-    color: #e53935;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.list-section p {
-    color: #777;
-    font-size: 1rem;
-}
-
-/* Book item styles */
-.book-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(220, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-}
-
-.book-item:hover {
-    box-shadow: 0 4px 8px rgba(220, 0, 0, 0.15); /* Subtle hover effect */
-}
-
-.book-item img {
-    width: 60px;
-    height: 90px;
-    object-fit: cover;
-    border-radius: 8px;
+.readingListRightCard {
+    margin-top: 15px;
+	margin-left: 15px;
+	background-color: white;
+	border-radius: 10px;
+	width: calc(75vw - 45px);
     margin-right: 15px;
-    box-shadow: 0 2px 4px rgba(183, 28, 28, 0.2);
+	height: calc(100vh - 110px);
+    overflow-y: auto;
 }
-
-.book-item h3 {
-    font-size: 1.2rem;
-    margin: 0;
-    color: #333;
+.readingListRightCard .noBooksFound {
+    margin-left: 15px;
+    color: #c82b2d;
 }
-
-.book-item p {
-    font-size: 1rem;
-    color: #666;
+.readingListRightCard h2 {
+    font-size: x-large;
+	font-weight: 500;
+	margin-left: 15px;
 }
-.book-item button {
-    background-color: #c0392b; /* Red color similar to your navigation buttons */
+.readingListRightCard .book-item {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 40px;
+}
+.readingListRightCard .book-item img {
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+}
+.book-item-desc h3 {
+    margin-top: -5px;
+    margin-bottom: 15px;
+    font-size: larger;
+    font-weight: 500;
+}
+.book-item-desc .bookAuthor {
+    margin-top: -15px;
+    margin-bottom: 10px;
+    font-size: medium;
+}
+.book-item-desc .deleteBook {
+	border-radius: 5px;
+	padding: 5px;
+	background-color: #c82b2d;
+	color: white;
+	border-style: solid;
+	border-color: #c82b2d;
+	border-width: 0.1rem;
+	width: 80px;
+	height: 35px;
+    margin-top: 15px;
+	align-items: center;
+	justify-content: center;
+	transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.book-item-desc .deleteBook:hover {
+    background-color: white;
+    color: #c82b2d;
+    transform: scale(1.05);
+}
+.book-item-desc .progress-container input{
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    padding-left: 5px;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+.book-item-desc .progress-container button{
+    border-radius: 5px;
+    background-color: #c82b2d;
     color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 20px; /* Rounded corners to match the app's theme */
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    border-style: solid;
+    border-color: #c82b2d;
+    border-width: 0.1rem;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
-
-.book-item button:hover {
-    background-color: #e74c3c; /* Slightly lighter red for hover effect */
+.pages-info p {
+    margin-bottom: -5px;
+    font-size: medium;
+    margin-top: 5px;
 }
-
-.book-item button:focus {
-    outline: none; /* Remove outline on focus */
-}
-
-
-

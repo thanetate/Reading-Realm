@@ -16,8 +16,6 @@ function Security() {
 	return (
 		<div className="security">
 			<Title />
-			{/* Get rid of this */}
-			<div className="spacer"></div>
 			<UserName />
 			<Email />
 			<Password />

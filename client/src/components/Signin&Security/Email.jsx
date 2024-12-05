@@ -8,8 +8,8 @@ function Email () {
 
     return (
         <>
-            <div className="middle-username-title">Email</div>
-			<div className="email-address">{user && <div>{user.email}</div>}</div>
+            <div className="settingsSecurityEmailTitle">Email</div>
+			<div className="settingsSecurityEmail">{user && <div>{user.email}</div>}</div>
         </>
     );
 }

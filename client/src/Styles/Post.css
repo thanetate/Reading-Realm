@@ -8,7 +8,7 @@
 }
 .postCardContainer {
 	background-color: white;
-	width: 50vw;
+	width: 30vw;
 	height: 50vh;
 	border-radius: 10px;
 	padding: 15px;
@@ -20,12 +20,13 @@
 	flex-direction: column;
 }
 .postTitle {
-	font-size: large;
-	font-weight: 600;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-bottom: 10px;
-	border: none;
+	border-style: none;
+	font-size: larger;
+	font-weight: 500;
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 15px;
 	width: calc(100% - 30px);
 }
 input:focus {
@@ -33,28 +34,35 @@ input:focus {
 }
 .postAuthor {
     font-size: small;
-	margin-left: 15px;
-    padding: 5px;  
+	margin-left: 20px;
+	margin-right: 20px;
     border: none;
     width: calc(100% - 30px);
 }
 .postContent {
-    margin-left: 15px;
-	margin-right: 15px;
+    margin-left: 20px;
+	margin-right: 20px;
 	margin-top: 15px;
-	font-size: small;
+	margin-bottom: 15px;
+	font-size: medium;
 	white-space: normal;
 	overflow-y: scroll;
 	line-height: 1.8em;
-	height: 190px;
 	width: calc(100% - 30px);
+	height: 260px;
 	resize: none;
 	background-color: #f0f0f0;
 	outline: none;
 	box-shadow: none;
 	border-style: none;
 	border-radius: 10px;
-    padding: 5px;
+}
+.postPageContainer .postContent {
+	padding: 15px;
+}
+.postDate {
+	font-size: small;
+	margin-left: 15px;
 }
 .user-section {
 	position: absolute;
@@ -82,8 +90,9 @@ input:focus {
 	margin-top: 15px;
 	margin-left: 15px;
 	width: 100px;
-	border-radius: 10px;
+	border-radius: 5px;
 	font-size: small;
+	transition: background-color 0.3s ease, transform 0.3s ease;
 }
 .updatePost:hover {
 	background-color: #c82b2d;
@@ -99,8 +108,9 @@ input:focus {
 	margin-top: 15px;
 	margin-left: 15px;
 	width: 100px;
-	border-radius: 10px;
+	border-radius: 5px;
 	font-size: small;
+	transition: background-color 0.3s ease, transform 0.3s ease;
 }
 .deletePost:hover {
 	background-color: white;

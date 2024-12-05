@@ -1,8 +1,8 @@
 function Password() {
 	return (
 		<>
-			<div className="middle-username-title">Password</div>
-			<div className="password-err">Password cannot be changed.</div>
+			<div className="settingsSecurityPasswordTitle">Password</div>
+			<div className="settingsSecurityPassword">Password cannot be changed.</div>
 		</>
 	);
 }

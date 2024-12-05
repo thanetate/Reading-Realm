@@ -1,23 +1,34 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Books from "../Book/Book";
 
 function Header() {
 
-	const navigate = useNavigate();
-	const handleReadingList = () => {
-		navigate("/reading-list");
-	};
-
 	return (
 		<>
+		{/* Import fas fa-book icon */}
+		<link
+  			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  			rel="stylesheet"/>
+
 			<div className="header">
 				<div className="logo">
 					<Link to="/">
 						<img src="/icons/Reading Realm Logo Copy.png" alt="logo" />
 					</Link>
 				</div>
+				<div className="small-logo">
+					<Link to="/">
+						<img src="/icons/RR_Logo_Small.png" alt="logo" />
+					</Link>
+				</div>
 				<Books />
-				<button className="reading-list-header-btn" onClick={handleReadingList}>Reading Lists</button>
+				<div className="user-section">
+				<Link to="/dashboard">
+					<button>
+						<img src="/icons/user-line.svg" alt="user icon" />
+					</button>
+				</Link>
+			</div>
 			</div>
 		</>
 	);

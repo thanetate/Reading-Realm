@@ -11,7 +11,7 @@ const shortdescAtom = atom(localStorage.getItem("shortdesc") || "");
 const longdescAtom = atom(localStorage.getItem("longdesc") || "");
 
 function Descriptions() {
-	//this atom calls the details in the user object 
+	//this atom calls the details in the user object
 	const [user] = useAtom(testAtom);
 	//this atom is used to update info about the user
 	const [, updateUser] = useAtom(updateUserAtom);
@@ -34,22 +34,27 @@ function Descriptions() {
 
 	// Handle changes and store it in local storage
 	const handleFirstChange = (e) => {
-        setFirstName(e.target.value);
-    };
+		setFirstName(e.target.value);
+	};
 	const handleLastChange = (e) => {
-        setLastName(e.target.value);
-    };
+		setLastName(e.target.value);
+	};
 	const handleShortDescChange = (e) => {
-        setShortDesc(e.target.value);
-    };
+		setShortDesc(e.target.value);
+	};
 	const handleLongDescChange = (e) => {
-        setLongDesc(e.target.value);
-    };
+		setLongDesc(e.target.value);
+	};
 
 	// Submit the updated username to the database
 	const handleSubmit = () => {
 		if (user) {
-			const updatedUserDetails = { firstname: firstname, lastname: lastname, shortdesc: shortdesc, longdesc: longdesc};
+			const updatedUserDetails = {
+				firstname: firstname,
+				lastname: lastname,
+				shortdesc: shortdesc,
+				longdesc: longdesc,
+			};
 			console.log("Updating user with ID:", user._id);
 			updateUser({ userId: user._id, newDetails: updatedUserDetails });
 		}
@@ -63,37 +68,43 @@ function Descriptions() {
 
 	return (
 		<>
-			<div className="middle-username-title">First Name</div>
-			<input
-				className="middle-username-box"
-				value={firstname}
-				onChange={handleFirstChange}
-			/>
-			<div className="middle-username-title">Last Name</div>
-			<input
-				className="middle-username-box"
-				value={lastname}
-				onChange={handleLastChange}
-			/>
-			<div className="middle-username-title">Current position</div>
-			<input
-				className="middle-username-box"
-				value={shortdesc}
-				onChange={handleShortDescChange}
-			/>
-
-			<div className="middle-des-title">Description</div>
-			<textarea
-				className="middle-des-box"
-				value={longdesc}
-				onChange={handleLongDescChange}
-			></textarea>
-			
-			<div className="middle-cancel-btn" onClick={handleCancel}>
-				Cancel
+		<div className="settingsDescriptionContainer">
+			<div className="settingsDescriptionInputContainer">
+				<div className="settingsDescriptionTitle">First Name</div>
+				<input
+					className="settingsDescriptionInput"
+					value={firstname}
+					onChange={handleFirstChange}
+				/>
+				<div className="settingsDescriptionTitle">Last Name</div>
+				<input
+					className="settingsDescriptionInput"
+					value={lastname}
+					onChange={handleLastChange}
+				/>
+				<div className="settingsDescriptionTitle">Current position</div>
+				<input
+					className="settingsDescriptionInput"
+					value={shortdesc}
+					onChange={handleShortDescChange}
+				/>
 			</div>
-			<div className="middle-update-btn" onClick={handleSubmit} >
-				Update
+			<div className="settingsDescriptionTextareaContainer">
+				<div className="settingsDescriptionTitle">Description</div>
+				<textarea
+					className="settingsDescriptionTextarea"
+					value={longdesc}
+					onChange={handleLongDescChange}
+				></textarea>
+			</div>
+		</div>
+			<div className="settingsDescriptionButtonsContainer">
+				<div className="settingsDescriptionCancel" onClick={handleCancel}>
+					Cancel
+				</div>
+				<div className="settingsDescriptionUpdate" onClick={handleSubmit}>
+					Update
+				</div>
 			</div>
 		</>
 	);

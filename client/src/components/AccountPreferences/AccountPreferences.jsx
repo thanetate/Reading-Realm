@@ -12,14 +12,13 @@ function AccountPreferences() {
 
 	return (
 		<div>
-			<button className="nav-container">
-				<div className="nav-img">
+			<button className="cardTitle">
+				<div className="cardTitleImg">
 					<img src="/icons/profile.svg" alt="profile icon" />
 				</div>
-				<div className="nav-name">Account Preferences</div>
+				<h1>Account Preferences</h1>
 			</button>
 			<Avatar />
-			<div className="spacer"></div>
 			<Descriptions />
 		</div>
 	);

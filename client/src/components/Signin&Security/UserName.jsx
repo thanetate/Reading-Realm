@@ -8,7 +8,6 @@ import { atom } from "jotai";
 // Define an atom to store the username
 const usernameAtom = atom(localStorage.getItem("username") || "");
 
-
 function UserName() {
 	//this atom calls the details in the user object
 	const [user] = useAtom(testAtom);
@@ -45,18 +44,19 @@ function UserName() {
 
 	return (
 		<>
-			<div className="middle-username-title">User name</div>
+			<div className="settingsDescriptionTitle">User name</div>
 			<input
-				className="middle-username-box"
+				className="settingsDescriptionInput"
 				value={username}
 				onChange={handleUsernameChange}
 			/>
-			{/* Buttons that update the db */}
-			<div className="middle-cancel-btn" onClick={handleCancel}>
-				Cancel
-			</div>
-			<div className="middle-update-btn" onClick={handleSubmit}>
-				Update
+			<div className="settingsDescriptionButtonsContainer">
+				<div className="settingsSecurityCancel" onClick={handleCancel}>
+					Cancel
+				</div>
+				<div className="settingsSecurityUpdate" onClick={handleSubmit}>
+					Update
+				</div>
 			</div>
 		</>
 	);

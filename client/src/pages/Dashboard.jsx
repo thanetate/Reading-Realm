@@ -1,9 +1,10 @@
 import "../Styles/Dashboard.css";
-import { Link } from "react-router-dom";
 import { useUser } from "../hooks/useUser";
 import { LoginWrapper } from "./LoginWrapper";
 import Profile from "../components/Profile/Profile";
-//import ReadingGoalsProfilePage from "../components/Profile/ReadingGoalsProfilePage";
+import ReadingGoalsProfilePage from "../components/Profile/ReadingGoalsProfilePage";
+import ReadingList from "../components/ReadingList/ReadingList";
+import Header from "../components/Header/Header";
 
 function Dashboard() {
 	const { user, localStorageUser } = useUser();
@@ -12,17 +13,20 @@ function Dashboard() {
 	console.log("LS User:", localStorageUser);
 
 	return (
-		<LoginWrapper>
-			<div className="user-section">
-				<Link to="/">
-					<button>
-						<img src="/icons/user-line.svg" alt="user icon" />
-					</button>
-				</Link>
-			</div>
-			<Profile />
-			{/* <ReadingGoalsProfilePage /> */}
-		</LoginWrapper>
+		<div className="dash">
+			<LoginWrapper>
+				<Header />
+				<div className="dashboard">
+					<div className="dashboard-left">
+						<Profile />
+					</div>
+					<div className="dashboard-right">
+						<ReadingGoalsProfilePage />
+						<ReadingList />
+					</div>
+				</div>
+			</LoginWrapper>
+		</div>
 	);
 }
 

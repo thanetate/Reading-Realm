@@ -22,14 +22,13 @@ export function Posts() {
 	return (
 		<>
 			<div className="d-card-post">
-				<div className="post-name">Posts</div>
+				<h1>My Posts</h1>
 				<div className="post-main-container">
-					{/* {posts.map((post, index) => ( */}
 					{posts.slice().reverse().map((post, index) => (
 						<div key={index} className="p-container">
 							<div className="p-title">{post.title}</div>
 							<div className="p-author">{post.author}</div>
-							<div className="p-content">{post.content}</div>
+							<div className="p-content">&quot;{post.content}&quot;</div>
 							<div className="btns">
 								<button className="edit-btn" onClick={() => handlePostClick(user._id,post._id)}>Edit Post</button>
 								<button className="delete-btn" onClick={() => handlePostClick(user._id, post._id)}>Delete Post</button>

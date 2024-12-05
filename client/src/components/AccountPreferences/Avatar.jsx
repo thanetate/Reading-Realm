@@ -34,8 +34,6 @@ function Avatar() {
 		}
 	}, [setUser]);
 
-	//TODO; change useState to useAtom
-	//modal
 	const [showModal, setShowModal] = useState(false);
 	const handleOpenModal = () => {
 		setShowModal(true);
@@ -46,19 +44,22 @@ function Avatar() {
 
 	return (
 		<>
-			<div className="profile-pic">
-				{/* Calls avatar and bc avatar is set to a url we can just src the url */}
-				{user?.avatar && <img src={user.avatar} alt="User Avatar" />}
+			<div className="settingsPageAvatarContainer">
+				<div className="settingsPageAvatarImg">
+					{user?.avatar && <img src={user.avatar} alt="User Avatar" />}
+				</div>
+				<div className="settingsPageButtonsContainer">
+					<button className="settingsPageChange" onClick={handleOpenModal}>
+						<img src="/icons/img.svg" alt="picture icon" />
+						Change
+					</button>
+					{/* TODO: Add functionality to Remove Icon */}
+					<button className="settingsPageRemove">
+						<img src="/icons/trash.svg" alt="trash icon" />
+						Remove
+					</button>
+				</div>
 			</div>
-			<button className="middle-change-btn" onClick={handleOpenModal}>
-				<img src="/icons/img.svg" alt="picture icon" />
-				Change
-			</button>
-			<button className="middle-remove-btn">
-				{/* onClick={() => setAvatar("")} */}
-				<img src="/icons/trash.svg" alt="trash icon" />
-				Remove
-			</button>
 			{/* TODO: make this a for loop */}
 			<Modal show={showModal} onClose={handleCloseModal}>
 				<div className="icons-container">

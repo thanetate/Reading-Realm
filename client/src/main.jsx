@@ -16,6 +16,10 @@ import ReadingList from "./pages/ReadingList";
 import { Provider } from "jotai";
 import IndividualBook from "./pages/IndividualBook";
 import Post from "./pages/Post";
+import { useAtom } from "jotai";
+import Groups from "./pages/Groups";
+import GroupDetails from "./pages/GroupDetails"; 
+
 
 // Connecting front end to backend server
 axios.defaults.baseURL = "http://localhost:8000";
@@ -47,6 +51,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 						<Route path="/reading-list" element={<ReadingList />} /> 
 						<Route path="/book/:volumeID" element={<IndividualBook />}/>
 						<Route path="/:userId/:postId" element={<Post />}/>
+						<Route path="/groups" element={<Groups />} />
+            			<Route path="/groups/:id" element={<GroupDetails />} />
 					</Routes>
 				</UserContextProvider>
 				</Provider>

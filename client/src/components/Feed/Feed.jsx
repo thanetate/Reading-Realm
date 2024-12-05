@@ -1,6 +1,7 @@
 import { useAtom } from "jotai";
 import { feedPostsAtom, fetchFeedPostsAtom } from "../../atoms/postsAtom";
 import { useState, useEffect } from "react";
+import "./Feed.css";
 
 function Feed() {
 	const [feedPosts, setFeedPosts] = useAtom(feedPostsAtom);
@@ -8,33 +9,45 @@ function Feed() {
 	const [page] = useState(1);
 
 	useEffect(() => {
-        //fetch posts on mount
-        const fetchPosts = async () => {
-            const fetchedPosts = await fetchFeedPosts({ page });
-            //ensure the posts are sorted by created in descending order
-            const sortedPosts = fetchedPosts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)); //sort by newest first
-            setFeedPosts(sortedPosts);
-        };
-        fetchPosts();
-    }, [page, fetchFeedPosts, setFeedPosts]);
+		//fetch posts on mount
+		const fetchPosts = async () => {
+			const fetchedPosts = await fetchFeedPosts({ page });
+			//ensure the posts are sorted by created in descending order
+			const sortedPosts = fetchedPosts.sort(
+				(a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+			); //sort by newest first
+			setFeedPosts(sortedPosts);
+		};
+		fetchPosts();
+	}, [page, fetchFeedPosts, setFeedPosts]);
+
+	const formatDate = (dateString) => {
+		const options = {
+			year: "numeric",
+			month: "long",
+			day: "numeric",
+			hour: "2-digit",
+			minute: "2-digit",
+		};
+		return new Date(dateString).toLocaleDateString(undefined, options);
+	};
 
 	return (
 		<>
 			<div className="feed-card">
 				<div className="feed-tabs">
-                    {/* TODO: onclick event for the buttons */}
-					<button className="feed-tab2">Explore</button>
+					<h1>Explore</h1>
 				</div>
 				<div className="feedPostsContainer">
 					{feedPosts.map((post, index) => (
 						<div key={index} className="postContainer">
 							<div className="postTitle">{post.title}</div>
 							<div className="postAuthor">{post.author}</div>
-							<div className="postContent">{post.content}</div>
+							<div className="postContent">&quot;{post.content}&quot;</div>
+							<div className="postDate">{formatDate(post.createdAt)}</div>
 						</div>
 					))}
 				</div>
-				<img src="./icons/right.svg" alt="Right Arrow" className="feed-down"/>
 			</div>
 		</>
 	);

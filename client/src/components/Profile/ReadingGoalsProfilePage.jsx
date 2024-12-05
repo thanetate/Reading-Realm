@@ -4,6 +4,7 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useAtom } from "jotai";
 import { testAtom } from "../../atoms/testAtom";
+import "./ReadingGoals.css";
 
 export default function ReadingGoalsProfilePage() {
 	// Navigate to redirect page
@@ -21,7 +22,7 @@ export default function ReadingGoalsProfilePage() {
 
 	useEffect(() => {
 		if (user) {
-			fetchReadingGoals(user.id);
+			fetchReadingGoals(user._id);
 		}
 	}, [user]);
 
@@ -55,17 +56,19 @@ export default function ReadingGoalsProfilePage() {
 	};
 
 	return (
-		<div>
-			<div className="d-card-bottom-right">
-				<div className="bottom-right-title">Reading Goals</div>
-				<div className="d-readingGoal">
-					<button className="btn" onClick={goToReadingGoals}>
-						Reading Goals Page
-					</button>
+		<div className="readingGoals">
+			<div className="readingGoalsCardContainer">
+				<h1>Reading Goals</h1>
+				<div className="readingGoalsStatsContainer">
 					<p>Total Books: {goal.totalBooks}</p>
+					<p>Books Read: {goal.booksRead}</p>
 					<p>Start Date: {goal.startDate}</p>
 					<p>End Date: {goal.endDate}</p>
-					<p>Books Read: {goal.booksRead}</p>
+				</div>
+				<div className="navigateContainer">
+					<button className="navigateToReadingGoalsPage" onClick={goToReadingGoals}>
+						Reading Goals Page
+					</button>
 				</div>
 			</div>
 		</div>
