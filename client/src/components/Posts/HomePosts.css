@@ -1,0 +1,77 @@
+.home-card-post {
+    background-color: white;
+    display: flex;
+    flex-grow: 1;
+    border-radius: 10px;
+    margin: 15px;
+    min-height: 150px;
+    flex-direction: column;
+}
+.posts-input {
+	outline: none;
+	border: none;
+	background: none;
+	cursor: pointer;
+	font-size: medium;
+	margin-left: 15px;
+}
+.importmodal-container input {
+	outline: none;
+	border: solid;
+	border-color: #c82b2d;
+	border-radius: 10px;
+	margin-top: 10px;
+	padding: 10px;
+	background: none;
+	cursor: pointer;
+	font-size: medium;
+	overflow-x: hidden;
+}
+.importbook-btn {
+	width: 100px;
+	height: 35px;
+	border-color: #c82b2d;
+	border-style: solid;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #c82b2d;
+	background-color: white;
+	border-radius: 5px;
+	position: relative;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.importbook-btn:hover {
+	background-color: #c82b2d;
+	transform: scale(1.05);
+	color: white;
+}
+.posts-btn-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.posts-btn {
+	width: 100px;
+	height: 35px;
+	border-color: #c82b2d;
+	border-style: solid;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	background-color: #c82b2d;
+	border-radius: 5px;
+    margin-top: 15px;
+	margin-right: 15px;
+	margin-bottom: 15px;
+	transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.posts-btn:hover {
+	background-color: white;
+	transform: scale(1.05);
+	color: #c82b2d;
+}

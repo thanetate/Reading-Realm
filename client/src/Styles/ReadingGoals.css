@@ -1,0 +1,200 @@
+/* General Page Styling */
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General Page Styling */
+.reading-goals-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background-color: #f0f0f0;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    overflow-x: hidden; /* Prevent horizontal overflow */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Main Container for Sections */
+.reading-goals-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Adjust column proportions */
+    gap: 20px; /* Space between columns */
+    width: 100%; /* Full width within the page */
+    height: calc(100vh); /* Adjust height within the page */
+    padding: 20px; /* Add consistent padding */
+    margin: 0 auto; /* Center the container */
+    background-color: #f0f0f0;
+    overflow: hidden; /* Ensure no content overflows */
+}
+
+
+/* Left Column */
+.left-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* Distributes elements evenly */
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+  
+}
+
+.left-column form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.left-column input {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+.left-column input:focus {
+  
+    outline: none;
+}
+
+.left-column button {
+    padding: 12px;
+    background-color: #c82b2d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    width: 100%;
+}
+
+.left-column button:hover {
+    background-color: #c82b2d;
+    transform: scale(1.05);
+}
+
+/* Right Column */
+.right-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures sections fit */
+    gap: 0px;
+    
+}
+
+/* Progress Chart Section */
+.chart-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    border: 2px;
+}
+
+.chart {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 250px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0px;
+}
+
+.bar {
+    flex: 1;
+    margin: 5px;
+    border-radius: 10px;
+    transition: height 0.5s ease-in-out;
+}
+
+.bar:first-child {
+    background: linear-gradient(to top, #1e90ff, #87cefa); /* Blue for completed */
+}
+
+.bar:nth-child(2) {
+    background: linear-gradient(to top, #ff9999, #ffe5e5); /* Red for remaining */
+}
+
+.bar span {
+    position: absolute;
+    bottom: 100%;
+    transform: translateY(-5px);
+    background: white;
+    color: #b22222;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Current Goal Section */
+.current-goal-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    border: 2px  ;
+}
+
+.goal-details {
+    padding: 20px;
+    margin-top: 15px;
+    background-color:white;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.goal-details p {
+    font-size: 1.1rem;
+    margin: 8px 0;
+}
+
+.current-goal-section input {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.current-goal-section button {
+    margin-top: 15px;
+    padding: 12px;
+    background-color: #c82b2d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    width: 100%;
+}
+
+.current-goal-section button:hover {
+    background-color: #c82b2d;
+    transform: scale(1.05);
+}
+

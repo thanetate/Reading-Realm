@@ -1,0 +1,48 @@
+.bookshelf {
+    display: flex;
+    flex-grow: 1;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #f0f0f0;
+}
+.bookshelfContainer {
+    border-radius: 10px;
+    background-color: white;
+    position: relative;
+    margin-left: 15px;
+    margin-right: 15px;
+    width: calc(100vw - 30px);
+    margin-bottom: 15px;
+    margin-top: -15px;
+}
+@media only screen and (min-width: 1000px) {
+	.bookshelfContainer {
+		width: calc(40vw - 30px);
+	}
+}
+.bookshelfBooks {
+	display: flex;
+	flex-direction: row;
+	gap: 15px;
+	overflow-x: scroll;
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-bottom: 15px;
+	padding-bottom: 25px;
+}
+.bookshelfBook img {
+	width: auto;
+	height: 250px;
+	border-radius: 5px;
+}
+.bookshelfBookTitle {
+	font-size: medium;
+	font-weight: 500;
+	margin-top: 10px;
+	width: 150px;
+	height: 20px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	display: block;
+}

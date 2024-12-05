@@ -1,0 +1,66 @@
+.popular-container {
+    display: flex;
+    background-color: white;
+    display: flex;
+    flex-grow: 1;
+    border-radius: 10px;
+    margin: 15px;
+    flex-direction: column;
+    max-height: 500px;
+    overflow-y: scroll;
+}
+@media only screen and (min-width: 1000px) {
+    .popular-container {
+        max-height: calc(100vh - 100px);
+        overflow-y: scroll;
+    }
+}
+.popular-title {
+    font-weight: 500;
+    font-size: x-large;
+    padding: 15px;
+    margin-bottom: 25px;
+}
+.popular-book-card-container {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    text-wrap: wrap;
+    margin-bottom: 10px;
+}
+.popular-book-desc {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.popular-book-title {
+    font-size: 20px;
+    font-weight: normal;
+    padding: 0;
+    margin: 0;
+    text-wrap: wrap;
+    width: 30vh;
+}
+.inner-popular-container ul {
+	list-style-type: none;
+	padding: 0; 
+	margin: 0; 
+}
+.popular-book-author {
+    font-size: 15px;
+    font-weight: normal;
+    padding: 0;
+    margin: 0;
+    text-wrap: wrap;
+} 
+.popular-book-img {
+    border-radius: 10px;
+    width: auto;
+    height: 150px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: rgba(0, 0, 0, 0.2);
+    margin-bottom: 50px;
+}
