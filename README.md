@@ -7,6 +7,12 @@ Reading Realm is a modern book management and social platform designed to enhanc
 
 Whether you're a casual reader or a bookworm, this app helps you stay organized, track your progress, and engage with a vibrant community of readers.
 
+## Contributions
+  - Kathryn Sheahen : Book Features
+  - Thane Tate : Social Features / Dashboard
+  - Aymen Beshir : Reading Lists
+  - Kaden Mcclung : Reading Goals
+
 ## Features
 📖 Personal Library Management
   - Keep track of all the books you own, currently reading, or plan to read.
