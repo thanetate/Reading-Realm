@@ -1,6 +1,4 @@
-# Reading Realm 
-
-Check it out here: https://reading-realm.vercel.app/
+# Reading Realm
 
 ## Overview
 Reading Realm is a modern book management and social platform designed to enhance your reading experience. 
