@@ -1,7 +1,9 @@
 # Reading Realm 
 
 ## Overview
-Reading Realm is a modern book management and social platform designed to enhance your reading experience. Whether you're a casual reader or a bookworm, this app helps you stay organized, track your progress, and engage with a vibrant community of readers. Check it out here: https://reading-realm.vercel.app/
+Reading Realm is a modern book management and social platform designed to enhance your reading experience. 
+
+Whether you're a casual reader or a bookworm, this app helps you stay organized, track your progress, and engage with a vibrant community of readers. Check it out here: https://reading-realm.vercel.app/
 
 ## Features
 📖 Personal Library Management
