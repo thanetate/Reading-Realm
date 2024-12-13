@@ -42,7 +42,7 @@ const BookCard = (props) => {
 
 		try {
 			const response = await fetch(
-				"http://localhost:8000/api/books/add-to-list",
+				"https://reading-realm-backend.vercel.app/api/books/add-to-list",
 				{
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
@@ -79,7 +79,7 @@ const BookCard = (props) => {
 	const loadBookReviewRating = async () => {
 			try {
 				const response = await axios.get(
-					`http://localhost:8000/review/get-reviews?bookId=${bookId}`
+					`https://reading-realm-backend.vercel.app/review/get-reviews?bookId=${bookId}`
 				);
 				if (response.status === 200) {
 					setReviews(response.data.reviews);

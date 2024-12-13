@@ -15,7 +15,7 @@ function ReadingList() {
             const fetchFavorites = async () => {
                 try {
                     const response = await axios.get(
-                        `http://localhost:8000/api/books/list/${user._id}/favorites`
+                        `https://reading-realm-backend.vercel.app/api/books/list/${user._id}/favorites`
                     );
                     setFavorites(response.data);
                 } catch (error) {

@@ -22,7 +22,7 @@ import GroupDetails from "./pages/GroupDetails";
 
 
 // Connecting front end to backend server
-axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.baseURL = "https://reading-realm-backend.vercel.app";
 axios.defaults.withCredentials = true;
 
 ReactDOM.createRoot(document.getElementById("root")).render(

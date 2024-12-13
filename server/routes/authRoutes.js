@@ -15,7 +15,7 @@ const {
 router.use(
 	cors({
 		credentials: true,
-		origin: "http://localhost:3000",
+		origin: "https://reading-realm.vercel.app",
 	})
 );
 

@@ -36,7 +36,7 @@ export default function ReadingGoals() {
 
     const fetchReadingGoals = async (userId) => {
         try {
-            const response = await axios.get("http://localhost:8000/reading-goals/get", {
+            const response = await axios.get("https://reading-realm-backend.vercel.app/reading-goals/get", {
                 params: { _id: userId }
             });
             if (response.data.error) {
@@ -62,7 +62,7 @@ export default function ReadingGoals() {
         e.preventDefault();
         const { _id, totalBooks, startDate, endDate } = goal;
         try {
-            const response = await axios.post("http://localhost:8000/reading-goals/set", {
+            const response = await axios.post("https://reading-realm-backend.vercel.app/reading-goals/set", {
                 _id,
                 totalBooks,
                 startDate,
@@ -85,7 +85,7 @@ export default function ReadingGoals() {
         const updatedBooksRead = goal.booksRead + parseInt(newBooksRead); // Calculate updated books read
         try {
             // Update the booksRead in the database
-            const response = await axios.put("http://localhost:8000/reading-goals/update", {
+            const response = await axios.put("https://reading-realm-backend.vercel.app/reading-goals/update", {
                 _id: user._id,
                 booksRead: updatedBooksRead,
             });

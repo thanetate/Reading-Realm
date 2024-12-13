@@ -55,7 +55,7 @@ function IndividualBook() {
 
 		try {
 			const response = await fetch(
-				"http://localhost:8000/api/books/add-to-list",
+				"https://reading-realm-backend.vercel.app/api/books/add-to-list",
 				{
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
@@ -94,7 +94,7 @@ function IndividualBook() {
 	const loadReviewsForBook = async () => {
 		try {
 			const response = await axios.get(
-				`http://localhost:8000/review/get-reviews?bookId=${bookId}`
+				`https://reading-realm-backend.vercel.app/review/get-reviews?bookId=${bookId}`
 			);
 			if (response.status === 200) {
 				setReviews(response.data.reviews);
@@ -133,7 +133,7 @@ function IndividualBook() {
 			}
 
 			const response = await axios.post(
-				"http://localhost:8000/review/add-or-update",
+				"https://reading-realm-backend.vercel.app/review/add-or-update",
 				{
 					bookId: books.id,
 					userId: user._id,
@@ -160,7 +160,7 @@ function IndividualBook() {
 	const deleteReview = async (reviewId) => {
 		try {
 			const response = await axios.delete(
-				`http://localhost:8000/review/delete/${reviewId}`,
+				`https://reading-realm-backend.vercel.app/review/delete/${reviewId}`,
 				{
 					averageRating: averageRating,
 				}

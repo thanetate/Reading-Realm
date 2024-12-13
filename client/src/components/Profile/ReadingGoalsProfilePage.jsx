@@ -29,7 +29,7 @@ export default function ReadingGoalsProfilePage() {
 	const fetchReadingGoals = async (userId) => {
 		try {
 			const response = await axios.get(
-				"http://localhost:8000/reading-goals/get",
+				"https://reading-realm-backend.vercel.app/reading-goals/get",
 				{
 					params: { _id: userId },
 				}

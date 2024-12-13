@@ -23,7 +23,7 @@ function ReadingList() {
 			}
 
 			try {
-				const url = `http://localhost:8000/api/books/list/${user._id}/${activeList}`;
+				const url = `https://reading-realm-backend.vercel.app/api/books/list/${user._id}/${activeList}`;
 				const response = await fetch(url);
 				if (!response.ok) {
 					throw new Error("Failed to fetch books");
@@ -47,7 +47,7 @@ function ReadingList() {
 
 		try {
 			const response = await fetch(
-				`http://localhost:8000/api/books/${user._id}/${bookId}`,
+				`https://reading-realm-backend.vercel.app/api/books/${user._id}/${bookId}`,
 				{
 					method: "DELETE",
 					headers: { "Content-Type": "application/json" },
@@ -80,7 +80,7 @@ function ReadingList() {
 
 		try {
 			const response = await fetch(
-				`http://localhost:8000/api/books/update-pages-read/${user._id}/${bookId}`,
+				`https://reading-realm-backend.vercel.app/api/books/update-pages-read/${user._id}/${bookId}`,
 				{
 					method: "PUT",
 					headers: { "Content-Type": "application/json" },
