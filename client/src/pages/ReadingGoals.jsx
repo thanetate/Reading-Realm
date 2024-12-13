@@ -6,7 +6,7 @@ import { testAtom } from "../atoms/testAtom";
 import { useNavigate } from "react-router-dom";
 import Confetti from "react-confetti";
 import "../Styles/ReadingGoals.css";
-import Header from "../Components/Header/Header";
+import Header from "../components/Header/Header";
 import { Link } from "react-router-dom";
 
 

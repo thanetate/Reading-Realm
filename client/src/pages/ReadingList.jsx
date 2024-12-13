@@ -3,7 +3,7 @@ import { useAtom } from "jotai";
 import { testAtom } from "../atoms/testAtom";
 import { Link } from "react-router-dom";
 import "../Styles/ReadingList.css";
-import Header from "../Components/Header/Header";
+import Header from "../components/Header/Header";
 
 function ReadingList() {
 	const [activeList, setActiveList] = useState("currentlyReading");

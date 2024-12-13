@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header/Header";
-import "../styles/IndividualBook.css";
+import "../Styles/IndividualBook.css";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useAtom } from "jotai";
 import { testAtom } from "../atoms/testAtom";
