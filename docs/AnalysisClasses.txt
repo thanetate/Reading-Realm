@@ -1,0 +1,20 @@
+Team Rocket
+
+Abstract Analysis Classes :
+    - User
+    - Book
+    - Database
+    - UI
+
+Elaborated Design Class : User
+
+- Importance : The User class is essential to the project as it represents the core of user-related 
+functionality. All other primary classes rely on the structure of a user profile.
+
+- Complexity: The complexity of this class is very high, because of its interconnectedness with all 
+other analysis classes, managing data and state dependencies is crucial for our application. 
+
+- Interactivity: The Interactivity of this class is very high,  it must communicate and manage data 
+with other key classes, such as Book for user-specific book data, Database for information, and User 
+Interface for front-end interactions.
+
