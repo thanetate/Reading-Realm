@@ -1,13 +1,15 @@
-// models/book.js
 const mongoose = require('mongoose');
 
 const bookSchema = new mongoose.Schema({
+
+
     title: { type: String, required: true },
     author: { type: String, required: true },
     image: { type: String },
     publishDate: { type: String },
-    listName: { type: String, required: true }, // e.g., "currentlyReading", "pastReads", "favorites, Want to Read"
-    pagesRead: { type: Number, default: 0 }
+    listName: { type: String, required: true }, // "currentlyReading", "pastReads", etc.
+    pagesRead: { type: Number, default: 0 },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Add userId field
 });
 
-module.exports = mongoose.model('book', bookSchema); // Export as lowercase 'book'
+module.exports = mongoose.model('book', bookSchema);

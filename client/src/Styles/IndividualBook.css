@@ -156,6 +156,7 @@ html {
 	font-weight: 500;
 	margin-top: 20px;
     margin-bottom: 0;
+	margin-left: -2px;
 }
 .individual-book-author {
 	font-size: larger;
@@ -188,6 +189,7 @@ html {
 	font-size: x-large;
 	font-weight: 500;
 	margin-top: 25px;
+	margin-left: -5px;
 }
 .submit-review-section {
     display: flex;
@@ -253,4 +255,23 @@ html {
     margin-top: 15px;
     margin-right: 25px;
     flex: 0 0 auto;
+}
+.review-item p {
+	margin-top: 10px;
+}
+.deleteReview {
+	border-color: #c82b2d;
+	background-color: #c82b2d;
+	color: white;
+	border-style: solid;
+	padding: 5px;
+	margin-top: 15px;
+	margin-left: 0px;
+	border-radius: 5px;
+	font-size: small;
+	transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.deleteReview:hover {
+    background-color: white;
+    color: #c82b2d;
 }

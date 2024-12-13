@@ -18,8 +18,8 @@ router.use(
 );
 
 // Routes for reading goals
-router.post("/reading-goals/set", setReadingGoal);
-router.put("/reading-goals/update", updateReadingProgress);
-router.get("/reading-goals/get", getReadingGoal);
+router.post("/set", setReadingGoal);
+router.put("/update", updateReadingProgress);
+router.get("/get", getReadingGoal);
 
 module.exports = router;

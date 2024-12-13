@@ -1,25 +1,27 @@
-/*
-div {
+/* Scoping the overall layout */
+.groups-container {
   margin: 20px;
   padding: 10px;
   font-family: Arial, sans-serif;
 }
 
-h1 {
-  font-size: 2em;
+/* Title styles */
+.groups-title {
+  font-size: 3em;
   text-align: center;
-  color: #333;
+  color: red;
   margin-bottom: 30px;
 }
 
-h2 {
+/* Styling for the group creation section */
+.groups-creation-title {
   font-size: 1.5em;
   margin-bottom: 10px;
   color: #555;
 }
 
-input,
-textarea {
+.groups-input,
+.groups-textarea {
   width: 100%;
   padding: 10px;
   margin: 8px 0;
@@ -29,12 +31,13 @@ textarea {
   box-sizing: border-box;
 }
 
-textarea {
+.groups-textarea {
   resize: vertical;
   height: 100px;
 }
 
-button {
+/* Button for creating a group */
+.groups-create-button {
   background-color: red;
   color: white;
   padding: 10px 15px;
@@ -44,15 +47,23 @@ button {
   font-size: 1em;
 }
 
-button:hover {
+.groups-create-button:hover {
   background-color: black;
 }
 
-div > div {
+/* Group list styles */
+.groups-list {
   margin-top: 20px;
 }
 
-div > div > a {
+.groups-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.groups-list-link {
   display: block;
   text-decoration: none;
   font-size: 1.2em;
@@ -61,10 +72,24 @@ div > div > a {
   transition: color 0.3s ease;
 }
 
-div > div > a:hover {
+.groups-list-link:hover {
   color: black;
 }
 
-div > div > a:active {
+.groups-list-link:active {
   color: #004085;
-} */
+}
+
+.groups-delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: red;
+  font-size: 1.2em;
+  margin-left: 10px;
+  transition: color 0.3s ease;
+}
+
+.groups-delete-button:hover {
+  color: black;
+}

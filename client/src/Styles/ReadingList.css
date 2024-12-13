@@ -47,12 +47,12 @@
     margin-bottom: 20px;
 }
 .search-bar img {
-    height: 20px;
+    height: 25px;
     width: auto;
     position: absolute;
     padding: 5px;
-    margin-left: 15px;
-    padding-top: 7px;
+    margin-left: 20px;
+    padding-top: 10px;
 }
 .search-bar input {
     border-color: #c82b2d;
@@ -98,8 +98,9 @@
     height: auto;
 }
 .book-item-desc h3 {
+    margin-left: -1px;
     margin-top: -5px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     font-size: larger;
     font-weight: 500;
 }
@@ -138,6 +139,9 @@
 }
 .book-item-desc .progress-container button{
     border-radius: 5px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
     background-color: #c82b2d;
     color: white;
     border-style: solid;
@@ -150,5 +154,6 @@
 .pages-info p {
     margin-bottom: -5px;
     font-size: medium;
-    margin-top: 5px;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }

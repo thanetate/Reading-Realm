@@ -1,38 +1,31 @@
 const express = require('express');
 const router = express.Router();
-const book = require('../models/book'); // Import the book model with lowercase
+const book = require('../models/book');
 
-// Route to add a book to a specified list
+// Route to add a book to a user's list
 router.post('/add-to-list', async (req, res) => {
-    const { book: bookData, listName } = req.body;
+    const { userId, book: bookData, listName } = req.body; // Extract userId from the body
 
     try {
-        // Create a new book document
-        const newBook = new book({
-            title: bookData.title,
-            author: bookData.author,
-            image: bookData.image,
-            publishDate: bookData.publishDate,
-            listName: listName
+        const newBook = await book.create({
+            ...bookData,
+            listName,
+            userId, // Assign the userId directly
         });
-
-        // Save the book to the database
-        await newBook.save();
 
         res.status(200).json({ message: 'Book added to list successfully', book: newBook });
     } catch (error) {
-        console.error('Failed to add book to list:', error); // Log the error
+        console.error('Failed to add book to list:', error);
         res.status(500).json({ message: 'Failed to add book to list', error });
     }
 });
 
-// Route to get books by listName
-router.get('/list/:listName', async (req, res) => {
-    const { listName } = req.params;
+// Route to get books by listName for a specific user
+router.get('/list/:userId/:listName', async (req, res) => {
+    const { userId, listName } = req.params; // Extract userId and listName from the params
 
     try {
-        // Fetch books from the database by listName
-        const books = await book.find({ listName });
+        const books = await book.find({ userId, listName }); // Filter by userId and listName
         res.status(200).json(books);
     } catch (error) {
         console.error('Failed to fetch books:', error);
@@ -40,17 +33,16 @@ router.get('/list/:listName', async (req, res) => {
     }
 });
 
-router.delete('/:id', async (req, res) => {
-    const { id } = req.params;
+// Route to delete a book for a specific user
+router.delete('/:userId/:id', async (req, res) => {
+    const { userId, id } = req.params; // Extract userId and book ID from the params
 
     try {
-        // Find the book by ID and delete it
-        const deletedBook = await book.findByIdAndDelete(id);
-        
+        const deletedBook = await book.findOneAndDelete({ _id: id, userId }); // Match book by _id and userId
         if (deletedBook) {
             res.status(200).json({ message: 'Book deleted successfully' });
         } else {
-            res.status(404).json({ message: 'Book not found' });
+            res.status(404).json({ message: 'Book not found or unauthorized' });
         }
     } catch (error) {
         console.error('Failed to delete book:', error);
@@ -58,21 +50,22 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-router.put('/update-pages-read/:id', async (req, res) => {
-    const { id } = req.params;
+// Route to update pages read for a book for a specific user
+router.put('/update-pages-read/:userId/:id', async (req, res) => {
+    const { userId, id } = req.params; // Extract userId and book ID from the params
     const { pagesRead } = req.body;
 
     try {
-        const updatedBook = await book.findByIdAndUpdate(
-            id,
+        const updatedBook = await book.findOneAndUpdate(
+            { _id: id, userId }, // Match by _id and userId
             { pagesRead },
-            { new: true }
+            { new: true } // Return the updated document
         );
 
         if (updatedBook) {
             res.status(200).json({ message: 'Pages read updated successfully', book: updatedBook });
         } else {
-            res.status(404).json({ message: 'Book not found' });
+            res.status(404).json({ message: 'Book not found or unauthorized' });
         }
     } catch (error) {
         console.error('Failed to update pages read:', error);
@@ -80,4 +73,5 @@ router.put('/update-pages-read/:id', async (req, res) => {
     }
 });
 
-module.exports = router
+module.exports = router;
+

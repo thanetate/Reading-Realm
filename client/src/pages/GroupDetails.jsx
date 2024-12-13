@@ -45,28 +45,33 @@ const GroupDetails = () => {
   if (!group) return <div>Loading...</div>;
 
   return (
-    <div className="group-details">
-      <h1>{group.name}</h1>
-      <p>{group.bio}</p>
+    <div className="group-details-container">
+      <h1 className="group-details-title">{group.name}</h1>
+      <p className="group-details-bio">{group.bio}</p>
 
       <div className="chat-box">
-        <div className="messages-container">
-          {messages.map((msg) => (
-            <div key={msg._id} className="message">
-              <strong>{msg.sender}: </strong>
-              <span>{msg.content}</span>
+        <div className="chat-messages-container">
+          {messages.map((msg, index) => (
+            <div key={index} className="chat-message">
+              <strong className="chat-message-strong">{msg.sender}: </strong>
+              <span className="chat-message-span">{msg.content}</span>
             </div>
           ))}
         </div>
-
-        <div className="input-container">
+        <div className="chat-input-container">
           <input
+            className="chat-input"
             type="text"
             placeholder="Type a message..."
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
           />
-          <button onClick={handleSendMessage}>Send</button>
+          <button
+            className="chat-send-button"
+            onClick={handleSendMessage}
+          >
+            Send
+          </button>
         </div>
       </div>
     </div>

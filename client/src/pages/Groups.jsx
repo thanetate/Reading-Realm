@@ -42,29 +42,42 @@ const Groups = () => {
   };
 
   return (
-    <div>
-      <h1>Groups</h1>
+    <div className="groups-container">
+      <h1 className="groups-title">Groups</h1>
       <div>
-        <h2>Create a Group</h2>
+        <h2 className="groups-creation-title">Create a Group</h2>
         <input
+          className="groups-input"
           type="text"
           placeholder="Group Name"
           value={newGroup.name}
           onChange={(e) => setNewGroup({ ...newGroup, name: e.target.value })}
         />
         <textarea
+          className="groups-textarea"
           placeholder="Group Bio"
           value={newGroup.bio}
           onChange={(e) => setNewGroup({ ...newGroup, bio: e.target.value })}
         />
-        <button onClick={handleCreateGroup}>Create</button>
+        <button
+          className="groups-create-button"
+          onClick={() => handleCreateGroup(newGroup)}
+        >
+          Create
+        </button>
       </div>
-      <div>
-        <h2>Existing Groups</h2>
+      <div className="groups-list">
         {groups.map((group) => (
-          <div key={group._id}>
-            <Link to={`/groups/${group._id}`}>{group.name}</Link>
-            <button onClick={() => handleDeleteGroup(group._id)}>Delete</button>
+          <div key={group._id} className="groups-list-item">
+            <Link to={`/groups/${group._id}`} className="groups-list-link">
+              {group.name}
+            </Link>
+            <button
+              className="groups-delete-button"
+              onClick={() => handleDeleteGroup(group._id)}
+            >
+              🗑️
+            </button>
           </div>
         ))}
       </div>

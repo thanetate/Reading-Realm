@@ -13,7 +13,7 @@ const {
 router.use(
     cors({
         credentials: true,
-        origin: 'https://reading-realm.vercel.app',
+        origin: "https://reading-realm.vercel.app",
     })
 );
 

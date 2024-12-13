@@ -382,7 +382,7 @@ function IndividualBook() {
 													<strong>Review:</strong> {review.review}
 												</p>
 												{/* Add delete button */}
-												<button onClick={() => deleteReview(review._id)}>
+												<button className="deleteReview" onClick={() => deleteReview(review._id)}>
 													Delete Review
 												</button>
 											</div>
